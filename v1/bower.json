@@ -1,0 +1,9 @@
+{
+	"name" : "Prima",
+	"version" : "1.0.0",
+	"dependencies" : {
+		"jquery" : "2.0.3",
+		"underscore" : "1.5.0",
+		"backbone" : "1.0.0"
+	}
+}
