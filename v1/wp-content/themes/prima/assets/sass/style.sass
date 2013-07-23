@@ -10,3 +10,43 @@
 
   */
 
+@import "global"
+
+body
+  font:
+    family: $font
+    size: $font-normal
+    weight: $font-light
+  color: $font-lighten
+
+  .post
+
+    .post-title
+      color: $font-darken
+      font:
+        size: $font-big
+        weight: $font-bold
+      margin:
+        top: 20px
+
+    .post-title-link
+      color: $font-darken
+
+    .post-content
+
+      a
+        background: $link-background
+        color: $link-color
+        display: inline-block
+        padding: 2px 5px
+        text-decoration: $link-decoration
+        @include transition-property(background)
+        @include transition-duration(1s)
+        +border-radius(3px)
+
+        &:hover
+          background: $link-hover-background
+
+      .aligncenter
+        display: block
+        margin: 0 auto

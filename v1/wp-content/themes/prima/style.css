@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Arvo);
 /*
  * Theme Name: leonardorb.net
  * Theme URI: http://www.leonardorb.net
@@ -8,3 +9,113 @@
  * Tags: leonardorb
  *
  */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin-top: 20px;
+  line-height: 25px;
+}
+p strong {
+  font-weight: 600;
+}
+
+body {
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #57534a;
+}
+body .post .post-title {
+  color: #423f37;
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+body .post .post-title-link {
+  color: #423f37;
+}
+body .post .post-content a {
+  background: #fdc171;
+  color: white;
+  display: inline-block;
+  padding: 2px 5px;
+  text-decoration: none;
+  -webkit-transition-property: background;
+  -moz-transition-property: background;
+  -o-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+body .post .post-content a:hover {
+  background: #ff5b4d;
+}
+body .post .post-content .aligncenter {
+  display: block;
+  margin: 0 auto;
+}
