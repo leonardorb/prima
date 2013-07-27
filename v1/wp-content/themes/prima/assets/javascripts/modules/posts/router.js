@@ -5,7 +5,7 @@
 
   Prima.Modules.Posts = Prima.App.module('Posts', {
     define: function(PostsModule, App, Backbone, Marionette, $, _) {
-      var postsRouter, _ref;
+      var _ref;
       PostsModule.Router = (function(_super) {
         __extends(Router, _super);
 
@@ -14,25 +14,17 @@
           return _ref;
         }
 
-        Router.prototype.routes = {
+        Router.prototype.controller = PostsModule.controller;
+
+        Router.prototype.appRoutes = {
           '': 'index',
-          'post/:name': 'single'
-        };
-
-        Router.prototype.index = function() {
-          return PostsModule.controller.index();
-        };
-
-        Router.prototype.single = function(name) {
-          return PostsModule.controller.single({
-            name: name
-          });
+          ':name': 'single'
         };
 
         return Router;
 
-      })(Backbone.Router);
-      return postsRouter = new PostsModule.Router();
+      })(Backbone.Marionette.AppRouter);
+      return PostsModule.router = new PostsModule.Router();
     }
   });
 

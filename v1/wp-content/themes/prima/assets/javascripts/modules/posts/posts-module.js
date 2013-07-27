@@ -20,28 +20,43 @@
           return Posts.fetch({
             success: function() {
               var postsView;
-              postsView = new PostsModule.Posts({
+              postsView = new PostsModule.PostsView({
                 collection: Posts
               });
-              postsView.render();
+              Prima.App.main.show(postsView);
               return document.title = '@leonardorb';
             }
           });
         };
 
-        Controller.prototype.single = function(options) {
+        Controller.prototype.single = function(slug) {
           var Post;
           Post = new Prima.Models.Post({
-            slug: options.name
+            slug: slug
           });
           return Post.fetch({
             success: function() {
-              var postsView;
-              postsView = new PostsModule.Post({
-                model: Post
-              });
-              postsView.render();
-              return document.title = Post.get('post').title + ' | @leonardorb';
+              var Page, postView;
+              if (Post.get('status') === 'ok') {
+                postView = new PostsModule.PostView({
+                  model: Post
+                });
+                Prima.App.main.show(postView);
+                return document.title = Post.get('post').title + ' | @leonardorb';
+              } else {
+                Page = new Prima.Models.Page({
+                  slug: slug
+                });
+                return Page.fetch({
+                  success: function() {
+                    postView = new PostsModule.PostView({
+                      model: Page
+                    });
+                    Prima.App.main.show(postView);
+                    return document.title = Page.get('page').title + ' | @leonardorb';
+                  }
+                });
+              }
             }
           });
         };

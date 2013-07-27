@@ -16,12 +16,37 @@
 
   Prima.Routers = {};
 
+  Prima.Utilities = {};
+
   Prima.App = new Backbone.Marionette.Application();
+
+  Prima.BaseURL = location.host === 'localhost' ? '/leonardorb.net/website/v1/' : '/';
+
+  Prima.CurrentURL = location.pathname;
+
+  Prima.App.addRegions({
+    sidebar: '.sidebar',
+    main: '.main'
+  });
 
   $(document).ready(function() {
     Prima.App.on('initialize:after', function() {
+      var postName;
       if (Backbone.history != null) {
-        return Backbone.history.start();
+        Backbone.history.start({
+          pushState: true,
+          root: Prima.BaseURL
+        });
+        postName = Prima.CurrentURL.split('/')[4];
+        if (postName != null) {
+          return Backbone.history.navigate(postName, {
+            trigger: true
+          });
+        } else {
+          return Backbone.history.navigate('', {
+            trigger: true
+          });
+        }
       }
     });
     return Prima.App.start();

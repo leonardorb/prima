@@ -1,15 +1,10 @@
 Prima.Modules.Posts = Prima.App.module 'Posts',
   define: (PostsModule, App, Backbone, Marionette, $, _) ->
 
-    class PostsModule.Router extends Backbone.Router
-      routes:
+    class PostsModule.Router extends Backbone.Marionette.AppRouter
+      controller: PostsModule.controller
+      appRoutes:
         ''           : 'index'
-        'post/:name' : 'single'
+        ':name'      : 'single'
 
-      index: ->
-        PostsModule.controller.index()
-
-      single: (name) ->
-        PostsModule.controller.single name : name
-
-    postsRouter = new PostsModule.Router()
+    PostsModule.router = new PostsModule.Router()

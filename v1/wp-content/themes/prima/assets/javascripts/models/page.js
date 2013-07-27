@@ -4,25 +4,25 @@
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  Prima.Models.Post = (function(_super) {
-    __extends(Post, _super);
+  Prima.Models.Page = (function(_super) {
+    __extends(Page, _super);
 
-    function Post() {
-      _ref = Post.__super__.constructor.apply(this, arguments);
+    function Page() {
+      _ref = Page.__super__.constructor.apply(this, arguments);
       return _ref;
     }
 
-    Post.prototype.url = function() {
+    Page.prototype.url = function() {
       var slug;
       slug = this.get('slug');
       if (slug != null) {
-        return Prima.BaseURL + 'api/get_post/?slug=' + slug;
+        return Prima.BaseURL + 'api/get_page/?slug=' + slug;
       } else {
         return Prima.BaseURL + this.id + '/?json=1';
       }
     };
 
-    return Post;
+    return Page;
 
   })(Backbone.Model);
 

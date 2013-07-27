@@ -4,4 +4,11 @@
     return new Handlebars.SafeString(str);
   });
 
+  Handlebars.registerHelper('pluralize', function(value, single, multiple) {
+    if (value <= 1) {
+      return "" + value + " " + single;
+    }
+    return "" + value + " " + multiple;
+  });
+
 }).call(this);

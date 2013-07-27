@@ -6,25 +6,34 @@
   Prima.Modules.Posts = Prima.App.module('Posts', {
     define: function(PostsModule, App, Backbone, Marionette, $, _) {
       var _ref;
-      return PostsModule.Post = (function(_super) {
-        __extends(Post, _super);
+      return PostsModule.PostView = (function(_super) {
+        __extends(PostView, _super);
 
-        function Post() {
-          _ref = Post.__super__.constructor.apply(this, arguments);
+        function PostView() {
+          _ref = PostView.__super__.constructor.apply(this, arguments);
           return _ref;
         }
 
-        Post.prototype.template = Handlebars.compile($('#post-template').html());
+        PostView.prototype.template = Handlebars.compile($('#post-template').html());
 
-        Post.prototype.el = '#posts';
-
-        Post.prototype.serializeData = function() {
+        PostView.prototype.serializeData = function() {
           return {
             'post': this.model.toJSON()
           };
         };
 
-        return Post;
+        PostView.prototype.render = function() {
+          PostView.__super__.render.apply(this, arguments);
+          return $(this.el).hide();
+        };
+
+        PostView.prototype.onShow = function() {
+          $('img').parent().css('background', 'none');
+          Loading.load();
+          return $(this.el).fadeIn('2500');
+        };
+
+        return PostView;
 
       })(Backbone.Marionette.ItemView);
     }

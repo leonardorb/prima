@@ -1,16 +1,19 @@
 @import "compass/reset"
 @import "compass/css3"
-@import "fonts"
+@import "mixins"
 
-$font: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif
+//============================================================================================
+// Typography
+
+$font: "adelle", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif
 
 // Font Size
 
 $font-small : 15px
 $font-normal : 20px
-$font-big : 28px
+$font-big : 38px
 
-// Font Style
+// Font Weights
 
 $font-light : 300
 $font-regular : 400
@@ -21,16 +24,24 @@ $font-bold : 600
 $font-lighten : #57534A
 $font-darken : #423F37
 
+// Font Styles
+
+strong
+  font-weight: $font-bold
+
 //============================================================================================
 //============================================================================================
 
 //============================================================================================
 // Link
 
-$link-background : #FDC171
-$link-color : #fff
-$link-decoration : none
-$link-hover-background : #FF5B4D
+$link-title-color: #423F37
+$link-title-hover-color: #2187e7
+
+$link-background : #fff
+$link-color : #2187e7
+$link-hover-color: #fff
+$link-hover-background : #2187e7
 
 a
   text-decoration: none
@@ -44,8 +55,14 @@ a
 p
   margin-top: 20px
   line-height: 25px
-  strong
-    font-weight: $font-bold
+
+//============================================================================================
+//============================================================================================
+
+//============================================================================================
+// Images
+
+$image-border-color : #ccc
 
 //============================================================================================
 //============================================================================================

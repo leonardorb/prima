@@ -13,40 +13,93 @@
 @import "global"
 
 body
+  color: $font-lighten
   font:
     family: $font
     size: $font-normal
     weight: $font-light
-  color: $font-lighten
 
-  .post
+.loading
+  height: 10px
+  left: 0
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 10
 
-    .post-title
-      color: $font-darken
-      font:
-        size: $font-big
-        weight: $font-bold
-      margin:
-        top: 20px
+.fullwidth .loader
+  background: $link-hover-background
+  height: 10px
+  position: fixed
+  width: 100%
+  //+box-shadow(0px 0px 10px 1px rgba(0,198,255,0.7))
+  +animation(fullexpand 1s ease-out)
 
-    .post-title-link
-      color: $font-darken
++keyframes(fullexpand)
+  0%
+    width: 0px
+    background: $link-background
+  100%
+    width: 100%
+    background: $link-hover-background
 
-    .post-content
+.wrapper
+  float: left
+  width: 100%
 
-      a
-        background: $link-background
-        color: $link-color
-        display: inline-block
-        padding: 2px 5px
-        text-decoration: $link-decoration
-        @include transition-property(background)
-        @include transition-duration(1s)
-        +border-radius(3px)
+.sidebar
+  background: #454545
+  height: 100%
+  left: 0
+  position: fixed
+  top: 0
+  width: 25%
 
-        &:hover
-          background: $link-hover-background
+.title
 
-      .aligncenter
-        display: block
-        margin: 0 auto
+.main
+  margin:
+    left: 30%
+  width: 65%
+
+.post
+
+.post-title
+  color: $font-darken
+  font:
+    size: $font-big
+    weight: $font-bold
+  margin:
+    top: 30px
+
+a.post-title-link
+  color: $font-darken
+  +transition-property(color)
+  +transition-duration(0.5s)
+
+a.post-title-link:hover
+  color: $link-title-hover-color
+
+.post-content
+
+  a
+    background: $link-background
+    color: $link-color
+    font-weight: $font-bold
+    display: inline-block
+    padding: 2px 4px
+    text-decoration: underline
+    +transition-property(background)
+    +transition-property(color)
+    +transition-duration(0.5s)
+    +border-radius(3px)
+
+    &:hover
+      text-decoration: none
+      color: $link-hover-color
+      background: $link-hover-background
+
+    img
+      border: 1px solid $image-border-color
+      padding: 3px
+      +border-radius(3px)

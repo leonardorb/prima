@@ -2,6 +2,6 @@ class Prima.Models.Post extends Backbone.Model
   url: ->
     slug = @get 'slug'
     if slug?
-      slug + '/?json=1'
+      Prima.BaseURL + 'api/get_post/?slug=' + slug
     else
-      @id + '/?json=1'
+      Prima.BaseURL + @id + '/?json=1'

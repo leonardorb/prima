@@ -6,25 +6,44 @@
   Prima.Modules.Posts = Prima.App.module('Posts', {
     define: function(PostsModule, App, Backbone, Marionette, $, _) {
       var _ref;
-      return PostsModule.Posts = (function(_super) {
-        __extends(Posts, _super);
+      return PostsModule.PostsView = (function(_super) {
+        __extends(PostsView, _super);
 
-        function Posts() {
-          _ref = Posts.__super__.constructor.apply(this, arguments);
+        function PostsView() {
+          _ref = PostsView.__super__.constructor.apply(this, arguments);
           return _ref;
         }
 
-        Posts.prototype.template = Handlebars.compile($('#posts-template').html());
+        PostsView.prototype.template = Handlebars.compile($('#posts-template').html());
 
-        Posts.prototype.el = '#posts';
+        PostsView.prototype.events = {
+          'click h1 a': 'navigate'
+        };
 
-        Posts.prototype.serializeData = function() {
+        PostsView.prototype.navigate = function(ev) {
+          ev.preventDefault();
+          return PostsModule.router.navigate($(ev.target).attr('href'), {
+            trigger: true
+          });
+        };
+
+        PostsView.prototype.serializeData = function() {
           return {
             'posts': this.collection.toJSON()
           };
         };
 
-        return Posts;
+        PostsView.prototype.render = function() {
+          PostsView.__super__.render.apply(this, arguments);
+          return $(this.el).hide();
+        };
+
+        PostsView.prototype.onShow = function() {
+          Loading.load();
+          return $(this.el).fadeIn('2500');
+        };
+
+        return PostsView;
 
       })(Backbone.Marionette.ItemView);
     }

@@ -6,19 +6,30 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
         Posts = new Prima.Collections.Posts()
         Posts.fetch
           success: ->
-            postsView = new PostsModule.Posts
+            postsView = new PostsModule.PostsView
               collection : Posts
-            postsView.render()
+            Prima.App.main.show postsView
             document.title = '@leonardorb'
 
-      single: (options) ->
+      single: (slug) ->
         Post = new Prima.Models.Post
-          slug : options.name
+          slug : slug
         Post.fetch
           success: ->
-            postsView = new PostsModule.Post
-              model : Post
-            postsView.render()
-            document.title = Post.get('post').title + ' | @leonardorb'
+            #TODO: better way to handle this
+            if Post.get('status') is 'ok'
+              postView = new PostsModule.PostView
+                model : Post
+              Prima.App.main.show postView
+              document.title = Post.get('post').title + ' | @leonardorb'                
+            else
+              Page = new Prima.Models.Page
+                slug : slug
+              Page.fetch
+                success: ->
+                  postView = new PostsModule.PostView
+                    model : Page
+                  Prima.App.main.show postView
+                  document.title = Page.get('page').title + ' | @leonardorb'
 
     PostsModule.controller = new PostsModule.Controller()
