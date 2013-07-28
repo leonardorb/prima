@@ -11,4 +11,31 @@
     return "" + value + " " + multiple;
   });
 
+  Handlebars.registerHelper('srtftime', function(date, format) {
+    if (!_.isDate(date)) {
+      date = new Date(date);
+    }
+    return date.format(format);
+  });
+
+  Handlebars.registerHelper('isCommentParent', function(comment, options) {
+    if (comment.parent === 0) {
+      return options.fn(comment);
+    }
+  });
+
+  Handlebars.registerHelper('getChilds', function(parentComment, comments, options) {
+    var childs, commentsHTML;
+    commentsHTML = '';
+    childs = _.each(comments, function(comment) {
+      if (comment.parent === parentComment.id) {
+        commentsHTML += '<div class="comment-child">';
+        commentsHTML += '<p>' + comment.author.name + '</p>';
+        commentsHTML += comment.content;
+        return commentsHTML += '</div>';
+      }
+    });
+    return new Handlebars.SafeString(commentsHTML);
+  });
+
 }).call(this);

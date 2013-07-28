@@ -4,6 +4,12 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
     class PostsModule.PostView extends Backbone.Marionette.ItemView
       template : Handlebars.compile $('#post-template').html()
 
+      events:
+        'click .post-title a' : 'samePost'
+
+      samePost: (ev) ->
+        ev.preventDefault()
+
       serializeData: ->
         'post' : @model.toJSON()
 

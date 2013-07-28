@@ -85,7 +85,7 @@ body {
 }
 
 .loading {
-  height: 10px;
+  height: 3px;
   left: 0;
   position: fixed;
   top: 0;
@@ -94,8 +94,8 @@ body {
 }
 
 .fullwidth .loader {
-  background: #2187e7;
-  height: 10px;
+  background: #423f37;
+  height: 3px;
   position: fixed;
   width: 100%;
   -webkit-animation: fullexpand 1s ease-out;
@@ -105,36 +105,36 @@ body {
 @-webkit-keyframes fullexpand {
   0% {
     width: 0px;
-    background: white;
+    background: #423f37;
   }
 
   100% {
     width: 100%;
-    background: #2187e7;
+    background: #423f37;
   }
 }
 
 @-moz-keyframes fullexpand {
   0% {
     width: 0px;
-    background: white;
+    background: #423f37;
   }
 
   100% {
     width: 100%;
-    background: #2187e7;
+    background: #423f37;
   }
 }
 
 @keyframes fullexpand {
   0% {
     width: 0px;
-    background: white;
+    background: #423f37;
   }
 
   100% {
     width: 100%;
-    background: #2187e7;
+    background: #423f37;
   }
 }
 
@@ -152,8 +152,24 @@ body {
   width: 25%;
 }
 
+.website-title {
+  background: #2187e7;
+  margin-top: 0;
+  padding-top: 240px;
+  padding-bottom: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.home-link {
+  font-size: 40px;
+  font-weight: 600;
+  color: white;
+}
+
 .main {
   margin-left: 30%;
+  padding-top: 20px;
   width: 65%;
 }
 
@@ -178,6 +194,11 @@ a.post-title-link {
 
 a.post-title-link:hover {
   color: #2187e7;
+}
+
+.post-date {
+  margin-top: 10px;
+  color: #999999;
 }
 
 .post-content a {
@@ -218,4 +239,13 @@ a.post-title-link:hover {
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
+}
+
+.comment-parent {
+  background: #666666;
+}
+
+.comment-child {
+  background: #999999;
+  margin-left: 5%;
 }

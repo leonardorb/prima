@@ -20,6 +20,8 @@ Prima.App.addRegions
 $(document).ready ->
 
   Prima.App.on 'initialize:after', ->
+    sidebarView = new Prima.Views.Sidebar()
+    Prima.App.sidebar.show sidebarView
     if Backbone.history?
       Backbone.history.start
         pushState : true

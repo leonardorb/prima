@@ -16,6 +16,14 @@
 
         PostView.prototype.template = Handlebars.compile($('#post-template').html());
 
+        PostView.prototype.events = {
+          'click .post-title a': 'samePost'
+        };
+
+        PostView.prototype.samePost = function(ev) {
+          return ev.preventDefault();
+        };
+
         PostView.prototype.serializeData = function() {
           return {
             'post': this.model.toJSON()

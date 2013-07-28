@@ -20,7 +20,7 @@ body
     weight: $font-light
 
 .loading
-  height: 10px
+  height: 3px
   left: 0
   position: fixed
   top: 0
@@ -28,8 +28,8 @@ body
   z-index: 10
 
 .fullwidth .loader
-  background: $link-hover-background
-  height: 10px
+  background: $font-darken
+  height: 3px
   position: fixed
   width: 100%
   //+box-shadow(0px 0px 10px 1px rgba(0,198,255,0.7))
@@ -38,10 +38,10 @@ body
 +keyframes(fullexpand)
   0%
     width: 0px
-    background: $link-background
+    background: $font-darken
   100%
     width: 100%
-    background: $link-hover-background
+    background: $font-darken
 
 .wrapper
   float: left
@@ -55,11 +55,27 @@ body
   top: 0
   width: 25%
 
-.title
+.website-title
+  background: $link-title-hover-color
+  margin:
+    top: 0
+  padding:
+    top: 240px
+    bottom: 30px
+  width: 100%
+  text-align: center
+
+.home-link
+  font:
+    size: 40px
+    weight: $font-bold
+  color: #fff
 
 .main
   margin:
     left: 30%
+  padding:
+    top: 20px
   width: 65%
 
 .post
@@ -79,6 +95,11 @@ a.post-title-link
 
 a.post-title-link:hover
   color: $link-title-hover-color
+
+.post-date
+  margin:
+    top: 10px
+  color: $font-light-gray
 
 .post-content
 
@@ -103,3 +124,11 @@ a.post-title-link:hover
       border: 1px solid $image-border-color
       padding: 3px
       +border-radius(3px)
+
+.comment-parent
+  background: #666
+
+.comment-child
+  background: #999
+  margin:
+    left: 5%

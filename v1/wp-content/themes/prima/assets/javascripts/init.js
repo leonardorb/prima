@@ -31,7 +31,9 @@
 
   $(document).ready(function() {
     Prima.App.on('initialize:after', function() {
-      var postName;
+      var postName, sidebarView;
+      sidebarView = new Prima.Views.Sidebar();
+      Prima.App.sidebar.show(sidebarView);
       if (Backbone.history != null) {
         Backbone.history.start({
           pushState: true,
