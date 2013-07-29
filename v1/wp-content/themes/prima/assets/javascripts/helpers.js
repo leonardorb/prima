@@ -13,7 +13,7 @@
 
   Handlebars.registerHelper('srtftime', function(date, format) {
     if (!_.isDate(date)) {
-      date = new Date(date);
+      date = new Date(Date(date));
     }
     return date.format(format);
   });

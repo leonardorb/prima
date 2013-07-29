@@ -7,7 +7,7 @@ Handlebars.registerHelper 'pluralize', (value, single, multiple) ->
   return "#{value} #{multiple}"
 
 Handlebars.registerHelper 'srtftime', (date, format) ->
-  date = new Date(date) unless _.isDate(date)
+  date = new Date(Date(date)) unless _.isDate(date)
   date.format format
 
 # comments
