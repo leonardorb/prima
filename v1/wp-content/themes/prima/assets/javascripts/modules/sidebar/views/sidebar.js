@@ -15,12 +15,22 @@
     Sidebar.prototype.template = Handlebars.compile($('#sidebar-template').html());
 
     Sidebar.prototype.events = {
-      'click h1 a': 'home'
+      'click h1 a': 'home',
+      'click .website-navigation a': 'page'
     };
 
     Sidebar.prototype.home = function(ev) {
       ev.preventDefault();
       return Backbone.history.navigate('', {
+        trigger: true
+      });
+    };
+
+    Sidebar.prototype.page = function(ev) {
+      ev.preventDefault();
+      $(ev.target).parent().find('a').removeClass('selected');
+      $(ev.target).addClass('selected');
+      return Backbone.history.navigate($(ev.target).attr('href'), {
         trigger: true
       });
     };

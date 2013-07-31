@@ -5,7 +5,7 @@
 </div>
 <div class="wrapper">
 	<section class="main"></section>
-	<aside class="sidebar">this is a test<br /><br /><a href="/leonardorb.net/website/v1">Home</a></aside>
+	<aside class="sidebar"></aside>
 </div>
 
 <!-- templates -->

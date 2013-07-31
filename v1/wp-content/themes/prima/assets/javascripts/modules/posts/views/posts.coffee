@@ -22,3 +22,4 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
       onShow: ->
         Loading.load()
         $(@el).fadeIn '2500'
+        $('.website-navigation a').removeClass 'selected'

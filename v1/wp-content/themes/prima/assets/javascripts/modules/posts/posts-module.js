@@ -48,12 +48,16 @@
                   slug: slug
                 });
                 return Page.fetch({
-                  success: function() {
-                    postView = new PostsModule.PostView({
-                      model: Page
-                    });
-                    Prima.App.main.show(postView);
-                    return document.title = Page.get('page').title + ' | @leonardorb';
+                  success: function(model, response) {
+                    if (response.status !== 'error') {
+                      postView = new PostsModule.PostView({
+                        model: Page
+                      });
+                      Prima.App.main.show(postView);
+                      return document.title = Page.get('page').title + ' | @leonardorb';
+                    } else {
+                      return document.title = '404 - Page not found | @leonardorb';
+                    }
                   }
                 });
               }

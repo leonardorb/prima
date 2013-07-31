@@ -36,9 +36,15 @@
         };
 
         PostView.prototype.onShow = function() {
+          var slug;
           $('img').parent().css('background', 'none');
           Loading.load();
-          return $(this.el).fadeIn('2500');
+          $(this.el).fadeIn('2500');
+          $('.website-navigation a').removeClass('selected');
+          if (this.model instanceof Prima.Models.Page) {
+            slug = this.model.get('slug');
+            return $('.website-navigation a[href=' + slug + ']').addClass('selected');
+          }
         };
 
         return PostView;

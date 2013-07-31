@@ -40,7 +40,8 @@
 
         PostsView.prototype.onShow = function() {
           Loading.load();
-          return $(this.el).fadeIn('2500');
+          $(this.el).fadeIn('2500');
+          return $('.website-navigation a').removeClass('selected');
         };
 
         return PostsView;

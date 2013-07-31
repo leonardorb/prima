@@ -21,3 +21,7 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
         $('img').parent().css 'background', 'none'
         Loading.load()
         $(@el).fadeIn '2500'
+        $('.website-navigation a').removeClass 'selected'
+        if @model instanceof Prima.Models.Page
+          slug = @model.get 'slug'
+          $('.website-navigation a[href='+slug+']').addClass 'selected'

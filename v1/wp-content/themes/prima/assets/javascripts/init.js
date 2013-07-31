@@ -51,7 +51,10 @@
         }
       }
     });
-    return Prima.App.start();
+    Prima.App.start();
+    return $('html').niceScroll({
+      scrollspeed: 200
+    });
   });
 
 }).call(this);

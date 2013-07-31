@@ -35,3 +35,6 @@ $(document).ready ->
           trigger : true
 
   Prima.App.start()
+
+  $('html').niceScroll
+    scrollspeed : 200

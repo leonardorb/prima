@@ -63,13 +63,50 @@ body
     top: 240px
     bottom: 30px
   width: 100%
-  text-align: center
+
+.website-name
+  margin:
+    left: 30px
 
 .home-link
   font:
-    size: 40px
+    size: 50px
     weight: $font-bold
   color: #fff
+
+.website-presentation
+  font:
+    size: 17px
+    weight: $font-light
+  color: #fff
+  margin:
+    bottom: 20px
+    left: 30px
+    top: 20px
+  line-height: 24px
+
+.website-navigation
+  margin:
+    left: 30px
+    top: 30px
+
+  a
+    border-bottom: 1px solid #666
+    color: #666
+    display: block
+    font-weight: $font-bold
+    padding: 15px 0
+    width: 100%
+    +transition-property(color, border-bottom)
+    +transition-duration(0.5s)
+
+    &:hover
+      border-bottom: 1px solid $link-color
+      color: #fff
+
+  .selected
+    color: #fff
+    border-bottom: 1px solid $link-color
 
 .main
   margin:

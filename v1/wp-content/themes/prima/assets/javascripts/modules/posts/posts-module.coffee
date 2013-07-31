@@ -26,10 +26,13 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
               Page = new Prima.Models.Page
                 slug : slug
               Page.fetch
-                success: ->
-                  postView = new PostsModule.PostView
-                    model : Page
-                  Prima.App.main.show postView
-                  document.title = Page.get('page').title + ' | @leonardorb'
+                success: (model, response) ->
+                  if response.status isnt 'error'
+                    postView = new PostsModule.PostView
+                      model : Page
+                    Prima.App.main.show postView
+                    document.title = Page.get('page').title + ' | @leonardorb'
+                  else
+                    document.title = '404 - Page not found | @leonardorb'
 
     PostsModule.controller = new PostsModule.Controller()
