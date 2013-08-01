@@ -73,7 +73,7 @@ a {
 }
 
 p {
-  margin-top: 20px;
+  padding-top: 20px;
   line-height: 25px;
 }
 
@@ -94,47 +94,50 @@ body {
 }
 
 .fullwidth .loader {
-  background: #423f37;
+  background: black;
   height: 3px;
   position: fixed;
   width: 100%;
   -webkit-animation: fullexpand 1s ease-out;
   -moz-animation: fullexpand 1s ease-out;
+  -webkit-box-shadow: 0 1px 1px black;
+  -moz-box-shadow: 0 1px 1px black;
+  box-shadow: 0 1px 1px black;
 }
 
 @-webkit-keyframes fullexpand {
   0% {
     width: 0px;
-    background: #423f37;
+    background: #666666;
   }
 
   100% {
     width: 100%;
-    background: #423f37;
+    background: black;
   }
 }
 
 @-moz-keyframes fullexpand {
   0% {
     width: 0px;
-    background: #423f37;
+    background: #666666;
   }
 
   100% {
     width: 100%;
-    background: #423f37;
+    background: black;
   }
 }
 
 @keyframes fullexpand {
   0% {
     width: 0px;
-    background: #423f37;
+    background: #666666;
   }
 
   100% {
     width: 100%;
-    background: #423f37;
+    background: black;
   }
 }
 
@@ -144,12 +147,15 @@ body {
 }
 
 .sidebar {
-  background: #454545;
+  background: rgba(69, 69, 69, 0.9);
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 25%;
+  -webkit-box-shadow: 1px 1px 3px black;
+  -moz-box-shadow: 1px 1px 3px black;
+  box-shadow: 1px 1px 3px black;
 }
 
 .website-title {
@@ -168,6 +174,7 @@ body {
   font-size: 50px;
   font-weight: 600;
   color: white;
+  text-shadow: 0 1px 0 #0b5296;
 }
 
 .website-presentation {
@@ -178,6 +185,7 @@ body {
   margin-left: 30px;
   margin-top: 20px;
   line-height: 24px;
+  text-shadow: 0 1px 0 #0b5296;
 }
 
 .website-navigation {
@@ -186,7 +194,7 @@ body {
 }
 .website-navigation a {
   border-bottom: 1px solid #666666;
-  color: #666666;
+  color: #999999;
   display: block;
   font-weight: 600;
   padding: 15px 0;
@@ -199,6 +207,7 @@ body {
   -moz-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
+  text-shadow: 0 1px 0 #333333;
 }
 .website-navigation a:hover {
   border-bottom: 1px solid #2187e7;
@@ -217,13 +226,14 @@ body {
 
 .post-title {
   color: #423f37;
-  font-size: 38px;
+  font-size: 45px;
   font-weight: 600;
+  margin-bottom: 10px;
   margin-top: 30px;
 }
 
 a.post-title-link {
-  color: #423f37;
+  color: white;
   -webkit-transition-property: color;
   -moz-transition-property: color;
   -o-transition-property: color;
@@ -232,24 +242,42 @@ a.post-title-link {
   -moz-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  -o-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  text-shadow: 0 1px 0 #333333;
 }
 
 a.post-title-link:hover {
-  color: #2187e7;
+  color: white;
 }
 
 .post-date {
-  margin-top: 10px;
-  color: #999999;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 0 1px 0 #333333;
 }
 
+.post-content {
+  background: rgba(255, 255, 255, 0.9);
+  margin-top: 6px;
+  padding: 10px 30px 30px 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 3px black;
+  -moz-box-shadow: 1px 1px 3px black;
+  box-shadow: 1px 1px 3px black;
+}
 .post-content a {
-  background: white;
   color: #2187e7;
   font-weight: 600;
   display: inline-block;
   padding: 2px 4px;
-  text-decoration: underline;
   -webkit-transition-property: background;
   -moz-transition-property: background;
   -o-transition-property: background;
@@ -282,12 +310,49 @@ a.post-title-link:hover {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
+.post-content pre {
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.comments-count {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-shadow: 0 1px 0 #333333;
+}
 
 .comment-parent {
-  background: #666666;
+  background: #2187e7;
+  color: white;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 10px 30px 30px 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 1px black;
+  -moz-box-shadow: 0 1px 1px black;
+  box-shadow: 0 1px 1px black;
 }
 
 .comment-child {
-  background: #999999;
+  background: white;
+  color: #333333;
   margin-left: 5%;
+  margin-top: 10px;
+  padding: 10px 30px 30px 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 1px black;
+  -moz-box-shadow: 0 1px 1px black;
+  box-shadow: 0 1px 1px black;
 }

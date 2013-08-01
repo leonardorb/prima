@@ -43,8 +43,11 @@
           $('.website-navigation a').removeClass('selected');
           if (this.model instanceof Prima.Models.Page) {
             slug = this.model.get('slug');
-            return $('.website-navigation a[href=' + slug + ']').addClass('selected');
+            $('.website-navigation a[href=' + slug + ']').addClass('selected');
           }
+          return $('pre.javascript').snippet('javascript', {
+            style: 'print'
+          });
         };
 
         return PostView;

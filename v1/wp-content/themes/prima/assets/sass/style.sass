@@ -28,35 +28,37 @@ body
   z-index: 10
 
 .fullwidth .loader
-  background: $font-darken
+  background: #000
   height: 3px
   position: fixed
   width: 100%
   //+box-shadow(0px 0px 10px 1px rgba(0,198,255,0.7))
   +animation(fullexpand 1s ease-out)
+  @include box-shadow(0 1px 1px #000)
 
 +keyframes(fullexpand)
   0%
     width: 0px
-    background: $font-darken
+    background: #666
   100%
     width: 100%
-    background: $font-darken
+    background: #000
 
 .wrapper
   float: left
   width: 100%
 
 .sidebar
-  background: #454545
+  background: rgba(69, 69, 69, 0.9)
   height: 100%
   left: 0
   position: fixed
   top: 0
   width: 25%
+  @include box-shadow(1px 1px 3px #000)
 
 .website-title
-  background: $link-title-hover-color
+  background: rgba(33, 135, 231, 1)
   margin:
     top: 0
   padding:
@@ -73,6 +75,7 @@ body
     size: 50px
     weight: $font-bold
   color: #fff
+  @include text-shadow(0 1px 0 #0B5296)
 
 .website-presentation
   font:
@@ -84,6 +87,7 @@ body
     left: 30px
     top: 20px
   line-height: 24px
+  @include text-shadow(0 1px 0 #0B5296)
 
 .website-navigation
   margin:
@@ -92,13 +96,14 @@ body
 
   a
     border-bottom: 1px solid #666
-    color: #666
+    color: #999
     display: block
     font-weight: $font-bold
     padding: 15px 0
     width: 100%
     +transition-property(color, border-bottom)
     +transition-duration(0.5s)
+    @include text-shadow(0 1px 0 #333)
 
     &:hover
       border-bottom: 1px solid $link-color
@@ -123,30 +128,38 @@ body
     size: $font-big
     weight: $font-bold
   margin:
+    bottom: 10px
     top: 30px
 
 a.post-title-link
-  color: $font-darken
+  color: #fff
   +transition-property(color)
   +transition-duration(0.5s)
+  +border-radius(3px 3px 0 0)
+  @include text-shadow(0 1px 0 #333)
 
 a.post-title-link:hover
-  color: $link-title-hover-color
+  color: #fff
 
 .post-date
   margin:
-    top: 10px
-  color: $font-light-gray
+    bottom: 20px
+  color: #fff
+  @include text-shadow(0 1px 0 #333)
 
 .post-content
+  background: rgba(255,255,255,0.9)
+  margin:
+    top: 6px
+  padding: 10px 30px 30px 30px
+  +border-radius(3px)
+  @include box-shadow(1px 1px 3px #000)
 
   a
-    background: $link-background
     color: $link-color
     font-weight: $font-bold
     display: inline-block
     padding: 2px 4px
-    text-decoration: underline
     +transition-property(background)
     +transition-property(color)
     +transition-duration(0.5s)
@@ -162,10 +175,40 @@ a.post-title-link:hover
       padding: 3px
       +border-radius(3px)
 
+  pre
+    font-size: 15px
+    margin:
+      bottom: 10px
+      top: 20px
+
+.comments-count
+  color: #fff
+  font:
+    size: 30px
+    weight: bold
+  margin:
+    bottom: 20px
+    top: 20px
+  @include text-shadow(0 1px 0 #333)
+
+.comments
+
 .comment-parent
-  background: #666
+  background: #2187e7
+  color: #fff
+  margin:
+    bottom: 20px
+    top: 20px
+  padding: 10px 30px 30px 30px
+  +border-radius(3px)
+  @include box-shadow(0 1px 1px #000)
 
 .comment-child
-  background: #999
+  background: #fff
+  color: #333
   margin:
     left: 5%
+    top: 10px
+  padding: 10px 30px 30px 30px
+  +border-radius(3px)
+  @include box-shadow(0 1px 1px #000)

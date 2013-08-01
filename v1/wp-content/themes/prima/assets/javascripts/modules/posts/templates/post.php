@@ -2,14 +2,16 @@
   {{#if post.post}}
   <article class="post">
     <h1 class="post-title"><a href="{{post.post.slug}}" class="post-title-link">{{post.post.title}}</a></h1>
-    <div class="post-date">{{srtftime post.post.date "%B %d, %Y"}}</div>
-    <div id="article-{{post.post.id}}-content" class="post-content">{{strToHtml post.post.content}}</div>
+    {{#if post.post.date}}<div class="post-date">{{srtftime post.post.date "%B %d, %Y"}}</div>{{/if}}
+    <div id="article-{{post.post.id}}-content" class="post-content">
+      {{strToHtml post.post.content}}
+    </div>
     <div id="article-{{post.post.id}}-comments-count" class="comments-count">{{pluralize post.post.comment_count 'comment' 'comments'}}</div>
     {{#if post.post.comments}}
     <div id="article-{{post.post.id}}-comments" class="comments">
       {{#each post.post.comments}}
         {{#isCommentParent this}}
-        <div id="article-{{../../post.post.id}}-parent-comment" class="comment-parent">
+        <div id="article-{{../../post.post.id}}-parent-comment" class="comment-parent{{#isAdminComment this}} comment-admin{{/isAdminComment}}">
           <p>{{name}}</p>
           {{strToHtml content}}
             {{getChilds this ../../post.post.comments}}

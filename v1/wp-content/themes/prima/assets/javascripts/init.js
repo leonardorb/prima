@@ -52,8 +52,11 @@
       }
     });
     Prima.App.start();
-    return $('html').niceScroll({
-      scrollspeed: 200
+    $.vegas({
+      src: 'wp-content/themes/prima/assets/images/bg.jpg'
+    });
+    return $.vegas('overlay', {
+      src: 'wp-content/themes/prima/assets/images/overlays/02.png'
     });
   });
 

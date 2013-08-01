@@ -36,5 +36,9 @@ $(document).ready ->
 
   Prima.App.start()
 
-  $('html').niceScroll
-    scrollspeed : 200
+  #$('html').niceScroll()
+
+  $.vegas
+    src:'wp-content/themes/prima/assets/images/bg.jpg'
+  $.vegas 'overlay',
+    src:'wp-content/themes/prima/assets/images/overlays/02.png'

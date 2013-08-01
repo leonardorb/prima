@@ -15,7 +15,10 @@
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/loading.js"></script>  
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/locale.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/date.js"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.nicescroll.min.js"></script>
+  <!--<script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.easing.1.3.js"></script>-->
+  <!--<script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.nicescroll.min.js"></script>-->
+  <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.vegas.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.snippet.js"></script>
 
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/models/post.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/models/page.js"></script>

@@ -24,12 +24,25 @@
     }
   });
 
+  Handlebars.registerHelper('isAdminComment', function(comment, options) {
+    if ((comment.author != null) && comment.author.id === 1) {
+      return options.fn(true);
+    }
+  });
+
   Handlebars.registerHelper('getChilds', function(parentComment, comments, options) {
     var childs, commentsHTML;
     commentsHTML = '';
     childs = _.each(comments, function(comment) {
+      var isAdminComment;
       if (comment.parent === parentComment.id) {
-        commentsHTML += '<div class="comment-child">';
+        isAdminComment = comment.author.id === 1;
+        commentsHTML += '<div class="comment-child';
+        if (isAdminComment) {
+          commentsHTML += ' comment-admin">';
+        } else {
+          commentsHTML += '">';
+        }
         commentsHTML += '<p>' + comment.author.name + '</p>';
         commentsHTML += comment.content;
         return commentsHTML += '</div>';

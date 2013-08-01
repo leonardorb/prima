@@ -25,3 +25,5 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
         if @model instanceof Prima.Models.Page
           slug = @model.get 'slug'
           $('.website-navigation a[href='+slug+']').addClass 'selected'
+        $('pre.javascript').snippet 'javascript',
+          style: 'print'
