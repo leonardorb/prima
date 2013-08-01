@@ -12,10 +12,11 @@
   });
 
   Handlebars.registerHelper('srtftime', function(date, format) {
+    var dateFormatted;
     if (!_.isDate(date)) {
-      date = new Date(Date(date));
+      dateFormatted = new Date(Date.parse(date));
     }
-    return date.format(format);
+    return dateFormatted.toString(format);
   });
 
   Handlebars.registerHelper('isCommentParent', function(comment, options) {

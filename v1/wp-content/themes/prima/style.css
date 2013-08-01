@@ -356,3 +356,7 @@ a.post-title-link:hover {
   -moz-box-shadow: 0 1px 1px black;
   box-shadow: 0 1px 1px black;
 }
+
+.comment-admin {
+  background: #ff9f13;
+}

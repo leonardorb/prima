@@ -12,7 +12,7 @@
 }
 
 .vegas-overlay {
-	background:transparent url(../overlays/01.png);
+	background:transparent url(../images/overlays/01.png);
 	opacity:0.5;
 	z-index:-1;
 }

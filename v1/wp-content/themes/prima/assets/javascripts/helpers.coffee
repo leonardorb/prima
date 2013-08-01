@@ -7,8 +7,8 @@ Handlebars.registerHelper 'pluralize', (value, single, multiple) ->
   return "#{value} #{multiple}"
 
 Handlebars.registerHelper 'srtftime', (date, format) ->
-  date = new Date(Date(date)) unless _.isDate(date)
-  date.format format
+  dateFormatted = new Date(Date.parse(date)) unless _.isDate(date)
+  dateFormatted.toString format
 
 # comments
 

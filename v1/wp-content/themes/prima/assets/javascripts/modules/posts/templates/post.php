@@ -2,7 +2,7 @@
   {{#if post.post}}
   <article class="post">
     <h1 class="post-title"><a href="{{post.post.slug}}" class="post-title-link">{{post.post.title}}</a></h1>
-    {{#if post.post.date}}<div class="post-date">{{srtftime post.post.date "%B %d, %Y"}}</div>{{/if}}
+    {{#if post.post.date}}<div class="post-date">{{srtftime post.post.date "MMMM d, yyyy"}}</div>{{/if}}
     <div id="article-{{post.post.id}}-content" class="post-content">
       {{strToHtml post.post.content}}
     </div>
