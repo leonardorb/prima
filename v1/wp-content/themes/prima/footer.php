@@ -22,6 +22,7 @@
 
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/models/post.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/models/page.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/models/comment.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/collections/posts.js"></script>
   
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/modules/posts/posts-module.js"></script>

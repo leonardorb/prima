@@ -17,7 +17,8 @@
         PostView.prototype.template = Handlebars.compile($('#post-template').html());
 
         PostView.prototype.events = {
-          'click .post-title a': 'samePost'
+          'click .post-title a': 'samePost',
+          'click .submit-comment': 'submitComment'
         };
 
         PostView.prototype.samePost = function(ev) {
@@ -33,6 +34,30 @@
         PostView.prototype.render = function() {
           PostView.__super__.render.apply(this, arguments);
           return $(this.el).hide();
+        };
+
+        PostView.prototype.submitComment = function(ev) {
+          var commentContent, commentEmail, commentName, commentPostId, newComment;
+          ev.preventDefault();
+          commentName = this.$('.comment-post-name').val();
+          commentEmail = this.$('.comment-post-email').val();
+          commentContent = this.$('.comment-post-content').val();
+          commentPostId = this.$('.comment-post-postId').val();
+          newComment = new Prima.Models.Comment({
+            name: commentName,
+            email: commentEmail,
+            content: commentContent,
+            post_id: commentPostId
+          });
+          return newComment.save({}, {
+            success: function() {
+              console.log(newComment);
+              return console.log('saved');
+            },
+            error: function() {
+              return console.log('something is wrong');
+            }
+          });
         };
 
         PostView.prototype.onShow = function() {

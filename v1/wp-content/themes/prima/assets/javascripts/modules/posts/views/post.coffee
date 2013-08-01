@@ -6,6 +6,7 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
 
       events:
         'click .post-title a' : 'samePost'
+        'click .submit-comment' : 'submitComment'
 
       samePost: (ev) ->
         ev.preventDefault()
@@ -16,6 +17,26 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
       render: ->
         super
         $(@el).hide()
+
+      submitComment:  (ev) ->
+        ev.preventDefault()
+        commentName    = @$('.comment-post-name').val()
+        commentEmail   = @$('.comment-post-email').val()
+        commentContent = @$('.comment-post-content').val()
+        commentPostId  = @$('.comment-post-postId').val()
+
+        newComment = new Prima.Models.Comment
+          name    : commentName
+          email   : commentEmail
+          content : commentContent
+          post_id : commentPostId
+
+        newComment.save {},
+          success: ->
+            console.log newComment
+            console.log 'saved'
+          error: ->
+            console.log 'something is wrong'
 
       onShow: ->
         $('img').parent().css 'background', 'none'

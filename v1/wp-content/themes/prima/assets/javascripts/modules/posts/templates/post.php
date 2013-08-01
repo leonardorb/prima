@@ -20,6 +20,13 @@
       {{/each}}
     </div>
     {{/if}}
+    <div id="article-{{post.post.id}}-comment-post" class="comment-post">
+      <p>Name: <input type="text" name="comment-post-name" class="comment-post-name" /></p>
+      <input type="hidden" name="comment-post-postId" class="comment-post-postId" value="{{post.post.id}}" />
+      <p>E-mail: <input type="text" name="comment-post-email" class="comment-post-email" /></p>
+      <p>Comment: <textarea name="comment-post-content" class="comment-post-content"></textarea></p>
+      <p><button class="submit-comment">Post comment</button></p>
+    </div>
   </article>
   {{/if}}
   {{#if post.page}}
