@@ -16,7 +16,15 @@ module.exports = (grunt) ->
         files:
           '<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
 
-    grunt.loadNpmTasks 'grunt-contrib-uglify'
-    grunt.loadNpmTasks 'grunt-contrib-concat'
+    cssmin:
+      add_banner:
+        options:
+          banner: '/*\n* Theme Name: leonardorb.net\n* Theme URI: http://www.leonardorb.net\n* Description: Version 1 of leonardorb.net\n* Version: 1.0\n* Author: Leonardo Rodrigues Barbosa\n* Author URI: http://www.leonardorb.net\n* Tags: leonardorb\n*\n*/'
+        files:
+          'style.css': ['style.css']
 
-    grunt.registerTask 'generatejs', ['concat', 'uglify']
+    grunt.loadNpmTasks 'grunt-contrib-concat'
+    grunt.loadNpmTasks 'grunt-contrib-uglify'
+    grunt.loadNpmTasks 'grunt-contrib-cssmin'
+
+    grunt.registerTask 'generateassets', ['concat', 'uglify', 'cssmin']

@@ -71,7 +71,7 @@
             $('.website-navigation a[href=' + slug + ']').addClass('selected');
           }
           return $('pre.javascript').snippet('javascript', {
-            style: 'print'
+            style: 'darkblue'
           });
         };
 

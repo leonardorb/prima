@@ -315,6 +315,9 @@ a.post-title-link:hover {
   margin-bottom: 10px;
   margin-top: 20px;
 }
+.post-content pre a:hover {
+  background: none;
+}
 
 .comments-count {
   color: white;
