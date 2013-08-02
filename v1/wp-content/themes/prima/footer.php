@@ -13,10 +13,7 @@
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/init.js"></script>
   
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/loading.js"></script>  
-  <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/locale.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/date.js"></script>
-  <!--<script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.easing.1.3.js"></script>-->
-  <!--<script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.nicescroll.min.js"></script>-->
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.vegas.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.snippet.js"></script>
 
@@ -31,7 +28,9 @@
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/modules/posts/views/post.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/modules/posts/views/posts.js"></script>
   <?php } else { ?>
-  <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/main.js"></script>
+  <script type="text/javascript" src="//use.typekit.net/eia3zwp.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script src="<?php echo get_template_directory_uri(); ?>/prima.min.js"></script>
   <?php } ?>
   </body>
 </html>
