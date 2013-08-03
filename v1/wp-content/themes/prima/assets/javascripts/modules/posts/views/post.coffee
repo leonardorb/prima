@@ -54,8 +54,8 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
           $('html, body').animate
             scrollTop:0
           , 1000
-          slug = @model.get 'slug'
-          $('.website-navigation a[href='+slug+']').addClass 'selected'
+          slug = @model.get('slug') + '/'
+          $('.website-navigation a[href="'+slug+'"]').addClass 'selected'
         $('pre.javascript').snippet 'javascript',
           style: 'darkblue'
         if location.hash? and $(location.hash).length isnt 0

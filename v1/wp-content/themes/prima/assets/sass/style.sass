@@ -199,7 +199,7 @@ a.post-title-link:hover
 
 .comment-parent
   background: rgba(69, 69, 69, 0.9)
-  border: 3px solid #ff9f13
+  border: 1px solid #ff9f13
   color: #fff
   margin:
     bottom: 20px
@@ -218,7 +218,7 @@ a.post-title-link:hover
   img
     border: 3px solid #fff
     +border-radius(50px)
-    @include box-shadow(0 2px 5px #000)
+    @include text-shadow(0 1px 1px #000)
 
 .comment-parent-data
   display: inline-block
@@ -237,17 +237,21 @@ a.post-title-link:hover
   a
     color: #ff9f13
 
+.comment-parent-content
+  padding:
+    right: 5%
+
 .comment-parent.comment-admin
   background: rgba(33, 135, 231, 0.9)
-  border: 3px solid #fff
+  border: 1px solid #fff
   color: #fff
 
   .comment-parent-photo img
     border: 10px solid #fff
 
   .comment-parent-author
-    font-size: 35px
-    @include text-shadow(0 3px 5px #000)
+    font-size: 30px
+    @include text-shadow(0 1px 1px #000)
   
   .comment-parent-author:after
     color: #fff
@@ -258,7 +262,7 @@ a.post-title-link:hover
 
 .comment-child
   background: rgba(69, 69, 69, 0.9)
-  border: 3px solid #ff9f13
+  border: 1px solid #ff9f13
   color: #fff
   display: block
   margin:
@@ -279,7 +283,7 @@ a.post-title-link:hover
   img
     border: 3px solid #fff
     +border-radius(50px)
-    @include box-shadow(0 2px 5px #000)
+    @include text-shadow(0 1px 1px #000)
 
 .comment-child-data
   display: inline-block
@@ -300,15 +304,15 @@ a.post-title-link:hover
 
 .comment-child.comment-admin
   background: rgba(33, 135, 231, 0.9)
-  border: 3px solid #fff
+  border: 1px solid #fff
   color: #fff
 
   .comment-child-photo img
     border: 10px solid #fff
 
   .comment-child-author
-    font-size: 35px
-    @include text-shadow(0 3px 5px #000)
+    font-size: 30px
+    @include text-shadow(0 1px 1px #000)
 
   .comment-child-author:after
     color: #fff

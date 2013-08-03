@@ -79,8 +79,8 @@
             $('html, body').animate({
               scrollTop: 0
             }, 1000);
-            slug = this.model.get('slug');
-            $('.website-navigation a[href=' + slug + ']').addClass('selected');
+            slug = this.model.get('slug') + '/';
+            $('.website-navigation a[href="' + slug + '"]').addClass('selected');
           }
           $('pre.javascript').snippet('javascript', {
             style: 'darkblue'
