@@ -73,7 +73,7 @@
           var slug;
           $('img').parent().css('background', 'none');
           Loading.load();
-          $(this.el).fadeIn('fast');
+          $(this.el).fadeIn('slow');
           $('.website-navigation a').removeClass('selected');
           if (this.model instanceof Prima.Models.Page) {
             $('html, body').animate({

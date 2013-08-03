@@ -390,6 +390,9 @@ a.post-title-link:hover {
   border: 3px solid white;
   color: white;
 }
+.comment-parent.comment-admin .comment-parent-photo img {
+  border: 10px solid white;
+}
 .comment-parent.comment-admin .comment-parent-author {
   font-size: 35px;
   text-shadow: 0 3px 5px black;
@@ -424,7 +427,7 @@ a.post-title-link:hover {
   display: inline-block;
   vertical-align: top;
   text-align: center;
-  width: 15%;
+  width: 20%;
   background: black;
 }
 .comment-child-photo img {
@@ -441,7 +444,7 @@ a.post-title-link:hover {
 
 .comment-child-data {
   display: inline-block;
-  width: 84%;
+  width: 79%;
 }
 
 .comment-child-author {
@@ -462,6 +465,9 @@ a.post-title-link:hover {
   background: rgba(33, 135, 231, 0.9);
   border: 3px solid white;
   color: white;
+}
+.comment-child.comment-admin .comment-child-photo img {
+  border: 10px solid white;
 }
 .comment-child.comment-admin .comment-child-author {
   font-size: 35px;
