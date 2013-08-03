@@ -4,6 +4,7 @@ class JSON_API_Comment {
   
   var $id;      // Integer
   var $name;    // String
+  var $email;   // String
   var $url;     // String
   var $date;    // String
   var $content; // String
@@ -24,6 +25,7 @@ class JSON_API_Comment {
     
     $this->id = (int) $wp_comment->comment_ID;
     $this->name = $wp_comment->comment_author;
+    $this->email = $wp_comment->comment_author_email;
     $this->url = $wp_comment->comment_author_url;
     $this->date = date($date_format, strtotime($wp_comment->comment_date));
     $this->content = $content;

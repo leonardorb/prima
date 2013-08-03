@@ -6,7 +6,7 @@ Handlebars.registerHelper 'pluralize', (value, single, multiple) ->
     return "#{value} #{single}"
   return "#{value} #{multiple}"
 
-Handlebars.registerHelper 'srtftime', (date, format) ->
+srtftime = (date, format) ->
   dateFormatted = new Date(Date.parse(date)) unless _.isDate(date)
   dateFormatted.toString format
 
@@ -24,11 +24,22 @@ Handlebars.registerHelper 'getChilds', (parentComment, comments, options) ->
   commentsHTML = ''
   childs = _.each comments, (comment) ->
     if comment.parent is parentComment.id
-      isAdminComment = comment.author.id is 1
-      commentsHTML += '<div class="comment-child'
+      isAdminComment = comment.author?.id is 1
+      commentsHTML += '<div id="comment-'+comment.id+'" class="comment-child'
       if isAdminComment then commentsHTML += ' comment-admin">' else commentsHTML += '">'
-      commentsHTML += '<p>' + comment.author.name + '</p>'
-      commentsHTML += comment.content
-      commentsHTML += '</div>'
+      if isAdminComment then comment.name = comment.author.name
+      commentsHTML += '<div class="comment-child-photo">'+getAvatar(comment.email)+'</div>'
+      commentsHTML += '<div class="comment-child-data"><div class="comment-child-content-author-and-date">'
+      commentsHTML += '<span class="comment-child-author">'+comment.name+'&nbsp;&nbsp;</span>'
+      commentsHTML += '<span class="comment-child-date"><a href="#comment-'+comment.id+'">'+srtftime(comment.date, "MMMM d, yyyy h:mm:ss tt")+'</a><span></div>'
+      commentsHTML += '<div class="comment-child-content">'+comment.content+'</div>'
+      commentsHTML += '</div></div>'
   return new Handlebars.SafeString(commentsHTML)
-  
+
+getAvatar = (email) ->
+  md5email = md5 email
+  gravatarElement = '<img src="http://www.gravatar.com/avatar/' + md5email + '?d='+encodeURIComponent('http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=80')+'" />'
+  return new Handlebars.SafeString gravatarElement
+
+Handlebars.registerHelper 'srtftime', srtftime
+Handlebars.registerHelper 'getAvatar', getAvatar

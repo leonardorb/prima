@@ -18,7 +18,7 @@
 
         Router.prototype.appRoutes = {
           '': 'index',
-          ':name': 'single'
+          ':name/': 'single'
         };
 
         return Router;

@@ -35,4 +35,5 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
                   else
                     document.title = '404 - Page not found | @leonardorb'
 
+
     PostsModule.controller = new PostsModule.Controller()

@@ -11,10 +11,18 @@
     <div id="article-{{post.post.id}}-comments" class="comments">
       {{#each post.post.comments}}
         {{#isCommentParent this}}
-        <div id="article-{{../../post.post.id}}-parent-comment" class="comment-parent{{#isAdminComment this}} comment-admin{{/isAdminComment}}">
-          <p>{{name}}</p>
-          {{strToHtml content}}
-            {{getChilds this ../../post.post.comments}}
+        <div id="comment-{{id}}" class="comment-parent{{#isAdminComment this}} comment-admin{{/isAdminComment}}">
+          <div class="comment-parent-photo">{{getAvatar this.email}}</div>
+          <div class="comment-parent-data">
+            <div class="comment-parent-content-author-and-date">
+              <span class="comment-parent-author">{{#if author.name}}{{author.name}}{{else}}{{name}}{{/if}}&nbsp;&nbsp;</span>
+              <span class="comment-parent-date"><a href="#comment-{{id}}">{{srtftime date "MMMM d, yyyy h:mm:ss tt"}}</a></span>
+            </div>
+            <div class="comment-parent-content">
+              {{strToHtml content}}
+            </div>
+          </div>
+          {{getChilds this ../../post.post.comments}}
         </div>
         {{/isCommentParent}}
       {{/each}}
@@ -33,17 +41,6 @@
   <article class="post">
     <h1 class="post-title"><a href="#post/{{post.page.slug}}" class="post-title-link">{{post.page.title}}</a></h1>
     <div id="article-{{post.page.id}}-content" class="post-content">{{strToHtml post.page.content}}</div>
-    <div id="article-{{post.page.id}}-comments-count" class="comments-count">{{pluralize post.page.comment_count 'comment' 'comments'}}</div>
-    {{#if post.post.comments}}
-    <div id="article-{{post.page.id}}-comments" class="comments">
-      {{#each post.post.comments}}
-        {{#if isCommentParent this}}
-        <p>{{name}}</p>
-        <p>{{strToHtml content}}</p>
-        {{/if}}
-      {{/each}}
-    </div>
-    {{/if}}
   </article>
   {{/if}}
 </script>

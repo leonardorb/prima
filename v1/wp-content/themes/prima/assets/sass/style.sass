@@ -75,7 +75,7 @@ body
     size: 50px
     weight: $font-bold
   color: #fff
-  @include text-shadow(0 1px 0 #0B5296)
+  @include text-shadow(0 1px 1px #000)
 
 .website-presentation
   font:
@@ -87,7 +87,7 @@ body
     left: 30px
     top: 20px
   line-height: 24px
-  @include text-shadow(0 1px 0 #0B5296)
+  @include text-shadow(0 1px 1px #000)
 
 .website-navigation
   margin:
@@ -101,13 +101,14 @@ body
     font-weight: $font-bold
     padding: 15px 0
     width: 100%
-    +transition-property(color, border-bottom)
+    +transition-property(color, border-bottom, margin-left)
     +transition-duration(0.5s)
-    @include text-shadow(0 1px 0 #333)
+    @include text-shadow(0 1px 1px #000)
 
     &:hover
       border-bottom: 1px solid $link-color
       color: #fff
+      margin-left: 10px
 
   .selected
     color: #fff
@@ -127,6 +128,7 @@ body
   font:
     size: $font-big
     weight: $font-bold
+  line-height: 55px
   margin:
     bottom: 10px
     top: 30px
@@ -136,7 +138,7 @@ a.post-title-link
   +transition-property(color)
   +transition-duration(0.5s)
   +border-radius(3px 3px 0 0)
-  @include text-shadow(0 1px 0 #333)
+  @include text-shadow(0 1px 1px #000)
 
 a.post-title-link:hover
   color: #fff
@@ -145,11 +147,12 @@ a.post-title-link:hover
   margin:
     bottom: 20px
   color: #fff
-  @include text-shadow(0 1px 0 #333)
+  @include text-shadow(0 1px 1px #000)
 
 .post-content
   background: rgba(255,255,255,0.9)
   margin:
+    bottom: 20px
     top: 6px
   padding: 10px 30px 30px 30px
   +border-radius(3px)
@@ -186,34 +189,124 @@ a.post-title-link:hover
 .comments-count
   color: #fff
   font:
-    size: 30px
+    size: $font-big
     weight: bold
   margin:
     bottom: 20px
-    top: 20px
-  @include text-shadow(0 1px 0 #333)
+  @include text-shadow(0 1px 1px #000)
 
 .comments
 
 .comment-parent
-  background: #2187e7
+  background: rgba(69, 69, 69, 0.9)
+  border: 3px solid #ff9f13
   color: #fff
   margin:
     bottom: 20px
     top: 20px
-  padding: 10px 30px 30px 30px
+  padding: 30px 0
   +border-radius(3px)
   @include box-shadow(0 1px 1px #000)
+
+.comment-parent-photo
+  display: inline-block
+  vertical-align: top
+  text-align: center
+  width: 15%
+  background: #000
+
+  img
+    border: 3px solid #fff
+    +border-radius(50px)
+    @include box-shadow(0 2px 5px #000)
+
+.comment-parent-data
+  display: inline-block
+  width: 84%
+
+.comment-parent-author
+  font-weight: bold
+
+.comment-parent-author:after
+  color: rgba(33, 135, 231, 1)
+  padding:
+    right: 5px
+  content: '\2022'
+
+.comment-parent-date
+  a
+    color: #ff9f13
+
+.comment-parent.comment-admin
+  background: rgba(33, 135, 231, 0.9)
+  border: 3px solid #fff
+  color: #fff
+
+  .comment-parent-author
+    font-size: 35px
+    @include text-shadow(0 3px 5px #000)
+  
+  .comment-parent-author:after
+    color: #fff
+
+  .comment-parent-date
+    a
+      color: #eee
 
 .comment-child
-  background: #fff
-  color: #333
+  background: rgba(69, 69, 69, 0.9)
+  border: 3px solid #ff9f13
+  color: #fff
+  display: block
   margin:
-    left: 5%
-    top: 10px
-  padding: 10px 30px 30px 30px
+    left: 15%
+    right: 5%
+    top: 20px
+  padding: 30px 0
   +border-radius(3px)
   @include box-shadow(0 1px 1px #000)
 
-.comment-admin
-  background: #ff9f13
+.comment-child-photo
+  display: inline-block
+  vertical-align: top
+  text-align: center
+  width: 15%
+  background: #000
+
+  img
+    border: 3px solid #fff
+    +border-radius(50px)
+    @include box-shadow(0 2px 5px #000)
+
+.comment-child-data
+  display: inline-block
+  width: 84%
+
+.comment-child-author
+  font-weight: bold
+
+.comment-child-author:after
+  color: rgba(33, 135, 231, 1)
+  padding:
+    right: 5px
+  content: '\2022'
+
+.comment-child-date
+  a
+    color: #ff9f13
+
+.comment-child.comment-admin
+  background: rgba(33, 135, 231, 0.9)
+  border: 3px solid #fff
+  color: #fff
+
+  .comment-child-author
+    font-size: 35px
+    @include text-shadow(0 3px 5px #000)
+
+  .comment-child-author:after
+    color: #fff
+
+  .comment-child-date
+    a
+      color: #eee

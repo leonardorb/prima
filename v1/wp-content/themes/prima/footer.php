@@ -16,6 +16,7 @@
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/date.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.vegas.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/jquery.snippet.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/utilities/md5.js"></script>
 
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/models/post.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/models/page.js"></script>

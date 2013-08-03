@@ -5,8 +5,10 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
       template : Handlebars.compile $('#post-template').html()
 
       events:
-        'click .post-title a' : 'samePost'
-        'click .submit-comment' : 'submitComment'
+        'click .post-title a'          : 'samePost'
+        'click .comment-parent-date a' : 'goToComment'
+        'click .comment-child-date a'  : 'goToComment'
+        'click .submit-comment'        : 'submitComment'
 
       samePost: (ev) ->
         ev.preventDefault()
@@ -17,6 +19,11 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
       render: ->
         super
         $(@el).hide()
+
+      goToComment: (ev) ->
+        ev.preventDefault()
+        target = $(ev.target)
+        window.location.hash = target.attr 'href'
 
       submitComment:  (ev) ->
         ev.preventDefault()
@@ -41,10 +48,17 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
       onShow: ->
         $('img').parent().css 'background', 'none'
         Loading.load()
-        $(@el).fadeIn '2500'
+        $(@el).fadeIn 'fast'
         $('.website-navigation a').removeClass 'selected'
         if @model instanceof Prima.Models.Page
+          $('html, body').animate
+            scrollTop:0
+          , 1000
           slug = @model.get 'slug'
           $('.website-navigation a[href='+slug+']').addClass 'selected'
         $('pre.javascript').snippet 'javascript',
           style: 'darkblue'
+        if location.hash? and $(location.hash).length isnt 0
+          $('html, body').animate
+            scrollTop: $(location.hash).offset().top
+          , 2000

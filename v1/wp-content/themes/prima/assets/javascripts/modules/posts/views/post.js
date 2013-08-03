@@ -18,6 +18,8 @@
 
         PostView.prototype.events = {
           'click .post-title a': 'samePost',
+          'click .comment-parent-date a': 'goToComment',
+          'click .comment-child-date a': 'goToComment',
           'click .submit-comment': 'submitComment'
         };
 
@@ -34,6 +36,13 @@
         PostView.prototype.render = function() {
           PostView.__super__.render.apply(this, arguments);
           return $(this.el).hide();
+        };
+
+        PostView.prototype.goToComment = function(ev) {
+          var target;
+          ev.preventDefault();
+          target = $(ev.target);
+          return window.location.hash = target.attr('href');
         };
 
         PostView.prototype.submitComment = function(ev) {
@@ -64,15 +73,23 @@
           var slug;
           $('img').parent().css('background', 'none');
           Loading.load();
-          $(this.el).fadeIn('2500');
+          $(this.el).fadeIn('fast');
           $('.website-navigation a').removeClass('selected');
           if (this.model instanceof Prima.Models.Page) {
+            $('html, body').animate({
+              scrollTop: 0
+            }, 1000);
             slug = this.model.get('slug');
             $('.website-navigation a[href=' + slug + ']').addClass('selected');
           }
-          return $('pre.javascript').snippet('javascript', {
+          $('pre.javascript').snippet('javascript', {
             style: 'darkblue'
           });
+          if ((location.hash != null) && $(location.hash).length !== 0) {
+            return $('html, body').animate({
+              scrollTop: $(location.hash).offset().top
+            }, 2000);
+          }
         };
 
         return PostView;

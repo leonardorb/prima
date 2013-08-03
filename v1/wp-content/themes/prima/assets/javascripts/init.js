@@ -31,7 +31,7 @@
 
   $(document).ready(function() {
     Prima.App.on('initialize:after', function() {
-      var postName, sidebarView;
+      var postHash, postName, sidebarView;
       sidebarView = new Prima.Views.Sidebar();
       Prima.App.sidebar.show(sidebarView);
       if (Backbone.history != null) {
@@ -40,8 +40,9 @@
           root: Prima.BaseURL
         });
         postName = Prima.CurrentURL.split('/')[4];
+        postHash = location.hash;
         if (postName != null) {
-          return Backbone.history.navigate(postName, {
+          return Backbone.history.navigate(postName + '/' + postHash, {
             trigger: true
           });
         } else {
@@ -53,10 +54,10 @@
     });
     Prima.App.start();
     $.vegas({
-      src: 'wp-content/themes/prima/assets/images/bg.jpg'
+      src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
     });
     return $.vegas('overlay', {
-      src: 'wp-content/themes/prima/assets/images/overlays/02.png'
+      src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
     });
   });
 

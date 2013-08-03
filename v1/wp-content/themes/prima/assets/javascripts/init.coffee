@@ -27,8 +27,9 @@ $(document).ready ->
         pushState : true
         root: Prima.BaseURL
       postName = Prima.CurrentURL.split('/')[4]
+      postHash = location.hash
       if postName?
-        Backbone.history.navigate postName,
+        Backbone.history.navigate postName + '/' + postHash,
           trigger: true
       else
         Backbone.history.navigate '',
@@ -39,6 +40,6 @@ $(document).ready ->
   #$('html').niceScroll()
 
   $.vegas
-    src:'wp-content/themes/prima/assets/images/bg.jpg'
+    src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
   $.vegas 'overlay',
-    src:'wp-content/themes/prima/assets/images/overlays/02.png'
+    src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
