@@ -4,6 +4,7 @@ class JSON_API_Comment {
   
   var $id;      // Integer
   var $name;    // String
+  #LEO: pull request
   var $email;   // String
   var $url;     // String
   var $date;    // String
@@ -25,6 +26,7 @@ class JSON_API_Comment {
     
     $this->id = (int) $wp_comment->comment_ID;
     $this->name = $wp_comment->comment_author;
+    #LEO: pull request
     $this->email = $wp_comment->comment_author_email;
     $this->url = $wp_comment->comment_author_url;
     $this->date = date($date_format, strtotime($wp_comment->comment_date));
@@ -51,7 +53,8 @@ class JSON_API_Comment {
     $_POST['email'] = $_REQUEST['email'];
     $_POST['url'] = empty($_REQUEST['url']) ? '' : $_REQUEST['url'];
     $_POST['comment'] = $_REQUEST['content'];
-    $_POST['parent'] = $_REQUEST['parent'];
+    #LEO pull request
+    $_POST['comment_parent'] = $_REQUEST['parent'];
     include ABSPATH . 'wp-comments-post.php';
   }
   

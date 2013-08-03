@@ -8,7 +8,7 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
         'click .post-title a'          : 'samePost'
         'click .comment-parent-date a' : 'goToComment'
         'click .comment-child-date a'  : 'goToComment'
-        'click .submit-comment'        : 'submitComment'
+        'submit form'                  : 'submitComment'
 
       samePost: (ev) ->
         ev.preventDefault()
@@ -27,16 +27,22 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
 
       submitComment:  (ev) ->
         ev.preventDefault()
-        commentName    = @$('.comment-post-name').val()
-        commentEmail   = @$('.comment-post-email').val()
-        commentContent = @$('.comment-post-content').val()
-        commentPostId  = @$('.comment-post-postId').val()
+        commentName      = encodeURIComponent @$('.comment-post-name').val()
+        commentEmail     = encodeURIComponent @$('.comment-post-email').val()
+        commentURL       = encodeURIComponent @$('.comment-post-url').val()
+        commentContent   = encodeURIComponent @$('.comment-post-content').val()
+        commentPostId    = encodeURIComponent @$('.comment-post-postId').val()
+        commentParent    = parseInt(encodeURIComponent @$('.comment-post-parent').val())
 
         newComment = new Prima.Models.Comment
-          name    : commentName
-          email   : commentEmail
-          content : commentContent
-          post_id : commentPostId
+          name      : commentName
+          email     : commentEmail
+          url       : commentURL
+          content   : commentContent
+          post_id   : commentPostId
+          parent    : commentParent
+
+        console.log newComment
 
         newComment.save {},
           success: ->

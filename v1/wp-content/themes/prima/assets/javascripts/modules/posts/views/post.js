@@ -20,7 +20,7 @@
           'click .post-title a': 'samePost',
           'click .comment-parent-date a': 'goToComment',
           'click .comment-child-date a': 'goToComment',
-          'click .submit-comment': 'submitComment'
+          'submit form': 'submitComment'
         };
 
         PostView.prototype.samePost = function(ev) {
@@ -46,18 +46,23 @@
         };
 
         PostView.prototype.submitComment = function(ev) {
-          var commentContent, commentEmail, commentName, commentPostId, newComment;
+          var commentContent, commentEmail, commentName, commentParent, commentPostId, commentURL, newComment;
           ev.preventDefault();
-          commentName = this.$('.comment-post-name').val();
-          commentEmail = this.$('.comment-post-email').val();
-          commentContent = this.$('.comment-post-content').val();
-          commentPostId = this.$('.comment-post-postId').val();
+          commentName = encodeURIComponent(this.$('.comment-post-name').val());
+          commentEmail = encodeURIComponent(this.$('.comment-post-email').val());
+          commentURL = encodeURIComponent(this.$('.comment-post-url').val());
+          commentContent = encodeURIComponent(this.$('.comment-post-content').val());
+          commentPostId = encodeURIComponent(this.$('.comment-post-postId').val());
+          commentParent = parseInt(encodeURIComponent(this.$('.comment-post-parent').val()));
           newComment = new Prima.Models.Comment({
             name: commentName,
             email: commentEmail,
+            url: commentURL,
             content: commentContent,
-            post_id: commentPostId
+            post_id: commentPostId,
+            parent: commentParent
           });
+          console.log(newComment);
           return newComment.save({}, {
             success: function() {
               console.log(newComment);

@@ -29,11 +29,15 @@
     </div>
     {{/if}}
     <div id="article-{{post.post.id}}-comment-post" class="comment-post">
-      <p>Name: <input type="text" name="comment-post-name" class="comment-post-name" /></p>
-      <input type="hidden" name="comment-post-postId" class="comment-post-postId" value="{{post.post.id}}" />
-      <p>E-mail: <input type="text" name="comment-post-email" class="comment-post-email" /></p>
-      <p>Comment: <textarea name="comment-post-content" class="comment-post-content"></textarea></p>
-      <p><button class="submit-comment">Post comment</button></p>
+      <form class="comment-form">
+        <p>Name: <input type="text" name="comment-post-name" class="comment-post-name" /></p>
+        <input type="hidden" name="comment-post-postId" class="comment-post-postId" value="{{post.post.id}}" />
+        <input type="hidden" name="comment-post-parent" class="comment-post-parent" value="4" />
+        <p>E-mail: <input type="text" name="comment-post-email" class="comment-post-email" /></p>
+        <p>Website: <input type="text" name="comment-post-url" class="comment-post-url" /></p>
+        <p>Comment: <textarea name="comment-post-content" class="comment-post-content"></textarea></p>
+        <p><input type="submit" class="submit-comment" value="Post comment" /></p>
+      </form>
     </div>
   </article>
   {{/if}}

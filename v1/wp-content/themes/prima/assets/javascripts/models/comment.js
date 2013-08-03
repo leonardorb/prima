@@ -13,7 +13,11 @@
     }
 
     Comment.prototype.url = function() {
-      return 'api/submit_comment?post_id=' + this.get('post_id') + '&name=' + this.get('name') + '&email=' + this.get('email') + '&content=' + this.get('content');
+      if (this.get('parent') != null) {
+        return Prima.BaseURL + '/api/submit_comment?post_id=' + this.get('post_id') + '&parent=' + this.get('parent') + '&name=' + this.get('name') + '&email=' + this.get('email') + '&url=' + this.get('url') + '&content=' + this.get('content');
+      } else {
+        return Prima.BaseURL + '/api/submit_comment?post_id=' + this.get('post_id') + '&name=' + this.get('name') + '&email=' + this.get('email') + '&url=' + this.get('url') + '&content=' + this.get('content');
+      }
     };
 
     return Comment;
