@@ -24,4 +24,10 @@ on_stylesheet_saved do |file|
 		puts "Moving: #{file}"
 		FileUtils.mv(file, File.dirname(file) + "/../../" + File.basename(file))
 	end
+	if File.exists?(File.dirname(file) + "/../../prima.js")
+	  FileUtils.rm(File.dirname(file) + "/../../prima.js")
+	end
+	if File.exists?(File.dirname(file) + "/../../prima.min.js")
+	  FileUtils.rm(File.dirname(file) + "/../../prima.min.js")
+	end
 end

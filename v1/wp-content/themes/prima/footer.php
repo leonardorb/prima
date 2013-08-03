@@ -25,9 +25,9 @@
   
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/modules/posts/posts-module.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/modules/posts/router.js"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/modules/sidebar/views/sidebar.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/modules/posts/views/post.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/modules/posts/views/posts.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/assets/javascripts/modules/sidebar/views/sidebar.js"></script>
   <?php } else { ?>
   <script type="text/javascript" src="//use.typekit.net/eia3zwp.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>

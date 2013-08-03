@@ -28,7 +28,7 @@
             banner: '/*\n* Theme Name: leonardorb.net\n* Theme URI: http://www.leonardorb.net\n* Description: Version 1 of leonardorb.net\n* Version: 1.0\n* Author: Leonardo Rodrigues Barbosa\n* Author URI: http://www.leonardorb.net\n* Tags: leonardorb\n*\n*/'
           },
           files: {
-            'style.css': ['style.css']
+            'style.css': ['assets/stylesheets/jquery.snippet.css', 'assets/stylesheets/jquery.vegas.css', 'style.css']
           }
         }
       }
