@@ -17,7 +17,7 @@ Prima.App.addRegions
   sidebar : '.sidebar'
   main    : '.main'
 
-$(document).ready ->
+$(document).ready =>
 
   Prima.App.on 'initialize:after', ->
     sidebarView = new Prima.Views.Sidebar()
@@ -41,3 +41,5 @@ $(document).ready ->
     src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
   $.vegas 'overlay',
     src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
+
+  @notification = new Prima.Utilities.Notification()

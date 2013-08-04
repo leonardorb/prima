@@ -19,6 +19,41 @@ body
     size: $font-normal
     weight: $font-light
 
+.overlay
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  height: 100%
+  width: 100%
+  background: rgba(0, 0, 0, 0.7)
+  z-index: 998
+
+.notification
+  display: none
+  font:
+    size: 25px
+    weight: $font-bold
+  position: absolute
+  left: 50%
+  margin:
+    top: 20%
+    left: -200px
+  padding: 20px
+  text-align: center
+  width: 400px
+  z-index: 999
+  +border-radius(3px)
+  @include box-shadow(0 5px 20px #000)
+
+.notification.info
+  background: #2187e7
+  color: #fff
+
+.notification.error
+  background: #a63a06
+  color: #fff
+
 .loading
   height: 3px
   left: 0
