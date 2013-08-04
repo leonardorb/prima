@@ -6,6 +6,12 @@ Handlebars.registerHelper 'pluralize', (value, single, multiple) ->
     return "#{value} #{single}"
   return "#{value} #{multiple}"
 
+Handlebars.registerHelper 'addComment', (commentsCount) ->
+  if commentsCount is 0
+    return 'Start the conversation'
+  else
+    return 'Join the conversation'
+
 srtftime = (date, format) ->
   dateFormatted = new Date(Date.parse(date)) unless _.isDate(date)
   dateFormatted.toString format
@@ -28,7 +34,7 @@ Handlebars.registerHelper 'getChilds', (parentComment, comments, options) ->
       commentsHTML += '<div id="comment-'+comment.id+'" class="comment-child'
       if isAdminComment then commentsHTML += ' comment-admin">' else commentsHTML += '">'
       if isAdminComment then comment.name = comment.author.name
-      commentsHTML += '<div class="comment-child-photo">'+getAvatar(comment.email)+'</div>'
+      commentsHTML += '<div class="comment-child-photo"><span>'+getAvatar(comment.email)+'</span></div>'
       commentsHTML += '<div class="comment-child-data"><div class="comment-child-content-author-and-date">'
       commentsHTML += '<span class="comment-child-author">'+comment.name+'&nbsp;&nbsp;</span>'
       commentsHTML += '<span class="comment-child-date"><a href="#comment-'+comment.id+'">'+srtftime(comment.date, "MMMM d, yyyy h:mm:ss tt")+'</a><span></div>'

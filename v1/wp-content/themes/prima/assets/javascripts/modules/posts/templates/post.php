@@ -12,7 +12,7 @@
       {{#each post.post.comments}}
         {{#isCommentParent this}}
         <div id="comment-{{id}}" class="comment-parent{{#isAdminComment this}} comment-admin{{/isAdminComment}}">
-          <div class="comment-parent-photo">{{getAvatar this.email}}</div>
+          <div class="comment-parent-photo"><span>{{getAvatar this.email}}</span></div>
           <div class="comment-parent-data">
             <div class="comment-parent-content-author-and-date">
               <span class="comment-parent-author">{{#if author.name}}{{author.name}}{{else}}{{name}}{{/if}}&nbsp;&nbsp;</span>
@@ -28,15 +28,17 @@
       {{/each}}
     </div>
     {{/if}}
+    <div id="article-{{post.post.id}}-comments-count" class="comments-add">{{addComment post.post.comment_count}}</div>
     <div id="article-{{post.post.id}}-comment-post" class="comment-post">
       <form class="comment-form">
-        <p>Name: <input type="text" name="comment-post-name" class="comment-post-name" /></p>
+        <p><label for="comment-post-name">Name</label><input type="text" class="input-text" id="comment-post-name" name="comment-post-name" class="input-text comment-post-name" placeholder="Your beautiful name" /></p>
         <input type="hidden" name="comment-post-postId" class="comment-post-postId" value="{{post.post.id}}" />
-        <input type="hidden" name="comment-post-parent" class="comment-post-parent" value="4" />
-        <p>E-mail: <input type="text" name="comment-post-email" class="comment-post-email" /></p>
-        <p>Website: <input type="text" name="comment-post-url" class="comment-post-url" /></p>
-        <p>Comment: <textarea name="comment-post-content" class="comment-post-content"></textarea></p>
-        <p><input type="submit" class="submit-comment" value="Post comment" /></p>
+        <input type="hidden" name="comment-post-parent" class="comment-post-parent" value="0" />
+        <p><label for="comment-post-email">E-mail</label><input type="text" class="input-text" id="comment-post-email" name="comment-post-email" class="input-text comment-post-email" placeholder="Your e-mail" /></p>
+        <p><label for="comment-post-url">Website</label><input type="text" class="input-text" id="comment-post-url" name="comment-post-url" class="input-text comment-post-url" placeholder="Do you have a website?" /></p>
+        <p><label for="comment-post-content">Comment</label><textarea id="comment-post-content" name="comment-post-content" class="comment-post-content" placeholder="Your special comment"></textarea></p>
+        <p><input type="submit" class="input-submit submit-comment" value="Post comment" /></p>
+        <div class="clear"></div>
       </form>
     </div>
   </article>

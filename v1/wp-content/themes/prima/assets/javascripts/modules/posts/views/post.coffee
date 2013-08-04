@@ -54,7 +54,7 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
       onShow: ->
         $('img').parent().css 'background', 'none'
         Loading.load()
-        $(@el).fadeIn 'slow'
+        $(@el).fadeIn 'fast'
         $('.website-navigation a').removeClass 'selected'
         if @model instanceof Prima.Models.Page
           $('html, body').animate

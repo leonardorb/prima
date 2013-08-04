@@ -13,6 +13,14 @@
     return "" + value + " " + multiple;
   });
 
+  Handlebars.registerHelper('addComment', function(commentsCount) {
+    if (commentsCount === 0) {
+      return 'Start the conversation';
+    } else {
+      return 'Join the conversation';
+    }
+  });
+
   srtftime = function(date, format) {
     var dateFormatted;
     if (!_.isDate(date)) {
@@ -49,7 +57,7 @@
         if (isAdminComment) {
           comment.name = comment.author.name;
         }
-        commentsHTML += '<div class="comment-child-photo">' + getAvatar(comment.email) + '</div>';
+        commentsHTML += '<div class="comment-child-photo"><span>' + getAvatar(comment.email) + '</span></div>';
         commentsHTML += '<div class="comment-child-data"><div class="comment-child-content-author-and-date">';
         commentsHTML += '<span class="comment-child-author">' + comment.name + '&nbsp;&nbsp;</span>';
         commentsHTML += '<span class="comment-child-date"><a href="#comment-' + comment.id + '">' + srtftime(comment.date, "MMMM d, yyyy h:mm:ss tt") + '</a><span></div>';

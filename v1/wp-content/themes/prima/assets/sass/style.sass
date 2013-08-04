@@ -186,7 +186,7 @@ a.post-title-link:hover
     a:hover
       background: none
 
-.comments-count
+.comments-count, .comments-add
   color: #fff
   font:
     size: $font-big
@@ -213,12 +213,20 @@ a.post-title-link:hover
   vertical-align: top
   text-align: center
   width: 15%
-  background: #000
 
-  img
-    border: 3px solid #fff
+  span
+    float: left
+    border: 5px solid #fff
+    display: inline-block
+    margin:
+      left: 20%
     +border-radius(50px)
-    @include text-shadow(0 1px 1px #000)
+
+    img
+      float: left
+      background: #fff
+      display: inline-block
+      +border-radius(50px)
 
 .comment-parent-data
   display: inline-block
@@ -246,8 +254,9 @@ a.post-title-link:hover
   border: 1px solid #fff
   color: #fff
 
-  .comment-parent-photo img
+  .comment-parent-photo span
     border: 10px solid #fff
+    @include box-shadow(0 5px 5px #000)
 
   .comment-parent-author
     font-size: 30px
@@ -278,12 +287,20 @@ a.post-title-link:hover
   vertical-align: top
   text-align: center
   width: 20%
-  background: #000
 
-  img
-    border: 3px solid #fff
+  span
+    float: left
+    border: 5px solid #fff
+    display: inline-block
+    margin:
+      left: 20%
     +border-radius(50px)
-    @include text-shadow(0 1px 1px #000)
+
+    img
+      float: left
+      background: #fff
+      display: inline-block
+      +border-radius(50px)
 
 .comment-child-data
   display: inline-block
@@ -307,8 +324,9 @@ a.post-title-link:hover
   border: 1px solid #fff
   color: #fff
 
-  .comment-child-photo img
+  .comment-child-photo span
     border: 10px solid #fff
+    @include box-shadow(0 5px 5px #000)
 
   .comment-child-author
     font-size: 30px
@@ -320,3 +338,95 @@ a.post-title-link:hover
   .comment-child-date
     a
       color: #eee
+
+.comment-form
+  background: rgba(69, 69, 69, 0.9)
+  margin:
+    bottom: 20px
+    top: 6px
+  padding: 10px 30px 30px 30px
+  +border-radius(3px)
+  @include box-shadow(1px 1px 3px #000)
+
+  p
+    float: left
+    margin: 0
+    width: 100%
+
+  label
+    clear: left
+    color: #999
+    font:
+      size: 25px
+      weight: $font-bold
+    display: inline
+    float: left
+    margin:
+      top: 18px
+    width: 20%
+    text-align: right
+    @include text-shadow(0 1px 1px #000)
+
+  .input-text
+    border: 5px solid #999
+    display: inline
+    color: $font-lighten
+    float: left
+    font:
+      family: $font
+      size: 20px
+      weight: $font-bold
+    margin:
+      left: 1%
+      right: 5%
+    padding: 10px 20px
+    width: 68%
+    +border-radius(35px)
+    &:focus
+      border: 5px solid #2187e7
+      background: #2187e7
+      color: #fff
+
+  textarea
+    border: 5px solid #999
+    color: $font-lighten
+    display: inline
+    float: left
+    font:
+      family: $font
+      size: 20px
+      weight: $font-bold
+    height: 200px
+    margin:
+      left: 1%
+      right: 5%
+    padding: 20px 20px
+    width: 68%
+    +border-radius(35px)
+    &:focus
+      border: 5px solid #2187e7
+      background: #2187e7
+      color: #fff
+
+  .input-submit
+    background: #2187e7
+    border: none
+    clear: both
+    color: #fff
+    cursor: pointer
+    float: left
+    font:
+      size: 20px
+      weight: $font-bold
+    height: 50px
+    margin:
+      left: 21%
+    padding: 10px
+    +border-radius(3px)
+    @include box-shadow(0 4px 0px #222)
+    &:active
+      margin-top: 2px
+      height: 48px
+      @include box-shadow(0 1px 0px #222)
+
+

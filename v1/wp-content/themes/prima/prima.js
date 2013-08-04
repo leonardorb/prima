@@ -16763,6 +16763,14 @@ _.extend(Marionette.Module, {
     return "" + value + " " + multiple;
   });
 
+  Handlebars.registerHelper('addComment', function(commentsCount) {
+    if (commentsCount === 0) {
+      return 'Start the conversation';
+    } else {
+      return 'Join the conversation';
+    }
+  });
+
   srtftime = function(date, format) {
     var dateFormatted;
     if (!_.isDate(date)) {
@@ -16799,7 +16807,7 @@ _.extend(Marionette.Module, {
         if (isAdminComment) {
           comment.name = comment.author.name;
         }
-        commentsHTML += '<div class="comment-child-photo">' + getAvatar(comment.email) + '</div>';
+        commentsHTML += '<div class="comment-child-photo"><span>' + getAvatar(comment.email) + '</span></div>';
         commentsHTML += '<div class="comment-child-data"><div class="comment-child-content-author-and-date">';
         commentsHTML += '<span class="comment-child-author">' + comment.name + '&nbsp;&nbsp;</span>';
         commentsHTML += '<span class="comment-child-date"><a href="#comment-' + comment.id + '">' + srtftime(comment.date, "MMMM d, yyyy h:mm:ss tt") + '</a><span></div>';
@@ -18475,7 +18483,11 @@ return (msw << 16) | (lsw & 0xFFFF);
     }
 
     Comment.prototype.url = function() {
-      return 'api/submit_comment?post_id=' + this.get('post_id') + '&name=' + this.get('name') + '&email=' + this.get('email') + '&content=' + this.get('content');
+      if (this.get('parent') != null) {
+        return Prima.BaseURL + '/api/submit_comment?post_id=' + this.get('post_id') + '&parent=' + this.get('parent') + '&name=' + this.get('name') + '&email=' + this.get('email') + '&url=' + this.get('url') + '&content=' + this.get('content');
+      } else {
+        return Prima.BaseURL + '/api/submit_comment?post_id=' + this.get('post_id') + '&name=' + this.get('name') + '&email=' + this.get('email') + '&url=' + this.get('url') + '&content=' + this.get('content');
+      }
     };
 
     return Comment;
@@ -18694,7 +18706,7 @@ return (msw << 16) | (lsw & 0xFFFF);
           'click .post-title a': 'samePost',
           'click .comment-parent-date a': 'goToComment',
           'click .comment-child-date a': 'goToComment',
-          'click .submit-comment': 'submitComment'
+          'submit form': 'submitComment'
         };
 
         PostView.prototype.samePost = function(ev) {
@@ -18720,18 +18732,23 @@ return (msw << 16) | (lsw & 0xFFFF);
         };
 
         PostView.prototype.submitComment = function(ev) {
-          var commentContent, commentEmail, commentName, commentPostId, newComment;
+          var commentContent, commentEmail, commentName, commentParent, commentPostId, commentURL, newComment;
           ev.preventDefault();
-          commentName = this.$('.comment-post-name').val();
-          commentEmail = this.$('.comment-post-email').val();
-          commentContent = this.$('.comment-post-content').val();
-          commentPostId = this.$('.comment-post-postId').val();
+          commentName = encodeURIComponent(this.$('.comment-post-name').val());
+          commentEmail = encodeURIComponent(this.$('.comment-post-email').val());
+          commentURL = encodeURIComponent(this.$('.comment-post-url').val());
+          commentContent = encodeURIComponent(this.$('.comment-post-content').val());
+          commentPostId = encodeURIComponent(this.$('.comment-post-postId').val());
+          commentParent = parseInt(encodeURIComponent(this.$('.comment-post-parent').val()));
           newComment = new Prima.Models.Comment({
             name: commentName,
             email: commentEmail,
+            url: commentURL,
             content: commentContent,
-            post_id: commentPostId
+            post_id: commentPostId,
+            parent: commentParent
           });
+          console.log(newComment);
           return newComment.save({}, {
             success: function() {
               console.log(newComment);
@@ -18815,7 +18832,7 @@ return (msw << 16) | (lsw & 0xFFFF);
 
         PostsView.prototype.onShow = function() {
           Loading.load();
-          $(this.el).fadeIn('2500');
+          $(this.el).fadeIn('slow');
           return $('.website-navigation a').removeClass('selected');
         };
 

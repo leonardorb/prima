@@ -37,8 +37,6 @@ $(document).ready ->
 
   Prima.App.start()
 
-  #$('html').niceScroll()
-
   $.vegas
     src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
   $.vegas 'overlay',
