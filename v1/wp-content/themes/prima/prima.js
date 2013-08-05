@@ -18494,7 +18494,7 @@ return (msw << 16) | (lsw & 0xFFFF);
     Notification.prototype.setEvents = function() {
       var _this = this;
       return this.overlay.on('click', function() {
-        return console.log('clicked');
+        return _this.hideNotification();
       });
     };
 
@@ -18543,6 +18543,29 @@ return (msw << 16) | (lsw & 0xFFFF);
         return Prima.BaseURL + '/api/submit_comment?post_id=' + this.get('post_id') + '&parent=' + this.get('parent') + '&name=' + this.get('name') + '&email=' + this.get('email') + '&url=' + this.get('url') + '&content=' + this.get('content');
       } else {
         return Prima.BaseURL + '/api/submit_comment?post_id=' + this.get('post_id') + '&name=' + this.get('name') + '&email=' + this.get('email') + '&url=' + this.get('url') + '&content=' + this.get('content');
+      }
+    };
+
+    Comment.prototype.validate = function(attrs, options) {
+      var errors, message;
+      console.log(attrs);
+      errors = [];
+      if (attrs.name.trim() === 'undefined') {
+        errors.push("Please, insert a valid name.");
+      }
+      if (attrs.email.trim() === 'undefined') {
+        errors.push("Please, insert a valid e-mail.");
+      }
+      if (attrs.content.trim() === '') {
+        errors.push("Please, insert your comment.");
+      }
+      if (errors.length > 0) {
+        message = "";
+        _.each(errors, function(error) {
+          return message += '<p>' + error + '</p>';
+        });
+        notification.setNotification('error', message);
+        return notification.showNotification();
       }
     };
 
@@ -18804,14 +18827,19 @@ return (msw << 16) | (lsw & 0xFFFF);
             post_id: commentPostId,
             parent: commentParent
           });
-          console.log(newComment);
           return newComment.save({}, {
-            success: function() {
-              console.log(newComment);
-              return console.log('saved');
+            success: function(model, response, options) {
+              if (response.status === 'error') {
+                notification.setNotification('error', response.error);
+                return notification.showNotification();
+              } else {
+                notification.setNotification('info', 'Thanks for the comment.');
+                return notification.showNotification();
+              }
             },
-            error: function() {
-              return console.log('something is wrong');
+            error: function(model, response, options) {
+              notification.setNotification('error', 'Something went wrong. :(');
+              return notification.showNotification();
             }
           });
         };

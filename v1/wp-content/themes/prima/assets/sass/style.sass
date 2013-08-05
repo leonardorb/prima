@@ -20,6 +20,7 @@ body
     weight: $font-light
 
 .overlay
+  cursor: pointer
   display: none
   position: fixed
   top: 0
@@ -39,7 +40,8 @@ body
   margin:
     top: 20%
     left: -200px
-  padding: 20px
+  padding: 0 20px 20px 20px
+  position: fixed
   text-align: center
   width: 400px
   z-index: 999
@@ -133,7 +135,9 @@ body
     border-bottom: 1px solid #666
     color: #999
     display: block
-    font-weight: $font-bold
+    font:
+      size: 20px
+      weight: $font-bold
     padding: 15px 0
     width: 100%
     +transition-property(color, border-bottom, margin-left)
@@ -392,13 +396,13 @@ a.post-title-link:hover
     clear: left
     color: #999
     font:
-      size: 25px
+      size: 20px
       weight: $font-bold
     display: inline
     float: left
     margin:
       top: 18px
-    width: 20%
+    width: 18%
     text-align: right
     @include text-shadow(0 1px 1px #000)
 
@@ -412,11 +416,11 @@ a.post-title-link:hover
       size: 20px
       weight: $font-bold
     margin:
-      left: 1%
-      right: 5%
+      left: 2%
+      right: 4%
     padding: 10px 20px
     width: 68%
-    +border-radius(35px)
+    +border-radius(15px)
     &:focus
       border: 5px solid #2187e7
       background: #2187e7
@@ -433,11 +437,11 @@ a.post-title-link:hover
       weight: $font-bold
     height: 200px
     margin:
-      left: 1%
+      left: 2%
       right: 5%
     padding: 20px 20px
     width: 68%
-    +border-radius(35px)
+    +border-radius(15px)
     &:focus
       border: 5px solid #2187e7
       background: #2187e7

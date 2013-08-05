@@ -62,14 +62,19 @@
             post_id: commentPostId,
             parent: commentParent
           });
-          console.log(newComment);
           return newComment.save({}, {
-            success: function() {
-              console.log(newComment);
-              return console.log('saved');
+            success: function(model, response, options) {
+              if (response.status === 'error') {
+                notification.setNotification('error', response.error);
+                return notification.showNotification();
+              } else {
+                notification.setNotification('info', 'Thanks for the comment.');
+                return notification.showNotification();
+              }
             },
-            error: function() {
-              return console.log('something is wrong');
+            error: function(model, response, options) {
+              notification.setNotification('error', 'Something went wrong. :(');
+              return notification.showNotification();
             }
           });
         };

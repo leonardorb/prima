@@ -22,7 +22,7 @@
     Notification.prototype.setEvents = function() {
       var _this = this;
       return this.overlay.on('click', function() {
-        return console.log('clicked');
+        return _this.hideNotification();
       });
     };
 

@@ -18,7 +18,7 @@ class Prima.Utilities.Notification
 
   setEvents: ->
     @overlay.on 'click', =>
-      console.log 'clicked'
+      @hideNotification()
 
   setNotification: (type, content) ->
     @resetNotificationClass()

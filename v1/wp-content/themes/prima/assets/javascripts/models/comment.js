@@ -20,6 +20,29 @@
       }
     };
 
+    Comment.prototype.validate = function(attrs, options) {
+      var errors, message;
+      console.log(attrs);
+      errors = [];
+      if (attrs.name.trim() === 'undefined') {
+        errors.push("Please, insert a valid name.");
+      }
+      if (attrs.email.trim() === 'undefined') {
+        errors.push("Please, insert a valid e-mail.");
+      }
+      if (attrs.content.trim() === '') {
+        errors.push("Please, insert your comment.");
+      }
+      if (errors.length > 0) {
+        message = "";
+        _.each(errors, function(error) {
+          return message += '<p>' + error + '</p>';
+        });
+        notification.setNotification('error', message);
+        return notification.showNotification();
+      }
+    };
+
     return Comment;
 
   })(Backbone.Model);

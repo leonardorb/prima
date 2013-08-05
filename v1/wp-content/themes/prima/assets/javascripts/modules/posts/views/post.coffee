@@ -42,14 +42,18 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
           post_id   : commentPostId
           parent    : commentParent
 
-        console.log newComment
-
         newComment.save {},
-          success: ->
-            console.log newComment
-            console.log 'saved'
-          error: ->
-            console.log 'something is wrong'
+          success: (model, response, options) ->
+            if response.status is 'error'
+              notification.setNotification 'error', response.error
+              notification.showNotification()
+            else
+              notification.setNotification 'info', 'Thanks for the comment.'
+              notification.showNotification()
+
+          error: (model, response, options) ->
+            notification.setNotification 'error', 'Something went wrong. :('
+            notification.showNotification()
 
       onShow: ->
         $('img').parent().css 'background', 'none'

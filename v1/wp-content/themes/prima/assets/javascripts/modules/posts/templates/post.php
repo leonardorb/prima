@@ -31,12 +31,12 @@
     <div id="article-{{post.post.id}}-comments-count" class="comments-add">{{addComment post.post.comment_count}}</div>
     <div id="article-{{post.post.id}}-comment-post" class="comment-post">
       <form class="comment-form">
-        <p><label for="comment-post-name">Name</label><input type="text" class="input-text" id="comment-post-name" name="comment-post-name" class="input-text comment-post-name" placeholder="Your beautiful name" /></p>
+        <p><label for="comment-post-name">Name</label><input type="text" class="input-text comment-post-name" id="comment-post-name" name="comment-post-name" placeholder="Your name" /></p>
         <input type="hidden" name="comment-post-postId" class="comment-post-postId" value="{{post.post.id}}" />
         <input type="hidden" name="comment-post-parent" class="comment-post-parent" value="0" />
-        <p><label for="comment-post-email">E-mail</label><input type="text" class="input-text" id="comment-post-email" name="comment-post-email" class="input-text comment-post-email" placeholder="Your e-mail" /></p>
-        <p><label for="comment-post-url">Website</label><input type="text" class="input-text" id="comment-post-url" name="comment-post-url" class="input-text comment-post-url" placeholder="Do you have a website?" /></p>
-        <p><label for="comment-post-content">Comment</label><textarea id="comment-post-content" name="comment-post-content" class="comment-post-content" placeholder="Your special comment"></textarea></p>
+        <p><label for="comment-post-email">E-mail</label><input type="text" class="input-text comment-post-email" id="comment-post-email" name="comment-post-email" placeholder="Your e-mail" /></p>
+        <p><label for="comment-post-url">Website</label><input type="text" class="input-text comment-post-url" id="comment-post-url" name="comment-post-url" placeholder="Your website or facebook or twitter, etc..." /></p>
+        <p><label for="comment-post-content">Comment</label><textarea id="comment-post-content" name="comment-post-content" class="comment-post-content" placeholder="Write your comment here"></textarea></p>
         <p><input type="submit" class="input-submit submit-comment" value="Post comment" /></p>
         <div class="clear"></div>
       </form>
