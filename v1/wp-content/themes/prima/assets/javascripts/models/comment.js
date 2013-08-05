@@ -22,12 +22,11 @@
 
     Comment.prototype.validate = function(attrs, options) {
       var errors, message;
-      console.log(attrs);
       errors = [];
-      if (attrs.name.trim() === 'undefined') {
+      if (attrs.name.trim() === '') {
         errors.push("Please, insert a valid name.");
       }
-      if (attrs.email.trim() === 'undefined') {
+      if (attrs.email.trim() === '') {
         errors.push("Please, insert a valid e-mail.");
       }
       if (attrs.content.trim() === '') {

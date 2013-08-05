@@ -45,14 +45,25 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
         newComment.save {},
           success: (model, response, options) ->
             if response.status is 'error'
-              notification.setNotification 'error', response.error
+              notification.setNotification 'error', '<p>'+response.error+'</p>'
               notification.showNotification()
             else
-              notification.setNotification 'info', 'Thanks for the comment.'
+              notification.setNotification 'info', '<p>Thanks for the comment.</p><p>You can also get in touch with me at:</p><p><a href="http://www.github.com/leonardorb">GitHub</a>, <a href="http://www.twitter.com/leonardorb">Twitter</a> and <a href="http://www.dribbble.com/leonardorb">Dribbble</a></p>'
               notification.showNotification()
 
+              newComment = '<div id="comment-'+model.get('id')+'" class="comment-parent">'
+              newComment += '<div class="comment-parent-photo"><span>avatar</span></div>'
+              newComment += '<div class="comment-parent-data">'
+              newComment += '<div class="comment-parent-content-author-and-date">'
+              newComment += '<span class="comment-parent-author">'+model.get('name')+'&nbsp;&nbsp;</span>'
+              newComment += '<span class="comment-parent-date"><a href="#comment-'+model.get('id')+'">data e hora</a></span>'
+              newComment += '</div>'
+              newComment += '<div class="comment-parent-content">'+model.get('content')+'</div></div></div>'
+
+              $('.comments').append newComment
+
           error: (model, response, options) ->
-            notification.setNotification 'error', 'Something went wrong. :('
+            notification.setNotification 'error', '<p>Something went wrong. :(</p>'
             notification.showNotification()
 
       onShow: ->

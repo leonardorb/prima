@@ -33,12 +33,11 @@ body
 .notification
   display: none
   font:
-    size: 25px
-    weight: $font-bold
-  position: absolute
+    size: 20px
+    weight: $font-normal
   left: 50%
   margin:
-    top: 20%
+    top: 10%
     left: -200px
   padding: 0 20px 20px 20px
   position: fixed
@@ -47,6 +46,11 @@ body
   z-index: 999
   +border-radius(3px)
   @include box-shadow(0 5px 20px #000)
+
+  a
+    color: #fff
+    font:
+      weight: $font-bold
 
 .notification.info
   background: #2187e7

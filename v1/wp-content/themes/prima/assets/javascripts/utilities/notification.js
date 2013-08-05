@@ -21,8 +21,13 @@
 
     Notification.prototype.setEvents = function() {
       var _this = this;
-      return this.overlay.on('click', function() {
+      this.overlay.on('click', function() {
         return _this.hideNotification();
+      });
+      return $(document).keyup(function(ev) {
+        if (ev.keyCode === 27) {
+          return _this.hideNotification();
+        }
       });
     };
 
@@ -38,13 +43,13 @@
     };
 
     Notification.prototype.showNotification = function() {
-      this.overlay.fadeIn(500);
-      return this.notification.slideDown(500);
+      this.overlay.fadeIn(200);
+      return this.notification.slideDown(200);
     };
 
     Notification.prototype.hideNotification = function() {
-      this.overlay.fadeOut(500);
-      return this.notification.fadeOut(500);
+      this.overlay.fadeOut(200);
+      return this.notification.fadeOut(200);
     };
 
     return Notification;

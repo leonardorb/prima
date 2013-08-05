@@ -18493,8 +18493,13 @@ return (msw << 16) | (lsw & 0xFFFF);
 
     Notification.prototype.setEvents = function() {
       var _this = this;
-      return this.overlay.on('click', function() {
+      this.overlay.on('click', function() {
         return _this.hideNotification();
+      });
+      return $(document).keyup(function(ev) {
+        if (ev.keyCode === 27) {
+          return _this.hideNotification();
+        }
       });
     };
 
@@ -18510,13 +18515,13 @@ return (msw << 16) | (lsw & 0xFFFF);
     };
 
     Notification.prototype.showNotification = function() {
-      this.overlay.fadeIn(500);
-      return this.notification.slideDown(500);
+      this.overlay.fadeIn(200);
+      return this.notification.slideDown(200);
     };
 
     Notification.prototype.hideNotification = function() {
-      this.overlay.fadeOut(500);
-      return this.notification.fadeOut(500);
+      this.overlay.fadeOut(200);
+      return this.notification.fadeOut(200);
     };
 
     return Notification;
@@ -18548,12 +18553,11 @@ return (msw << 16) | (lsw & 0xFFFF);
 
     Comment.prototype.validate = function(attrs, options) {
       var errors, message;
-      console.log(attrs);
       errors = [];
-      if (attrs.name.trim() === 'undefined') {
+      if (attrs.name.trim() === '') {
         errors.push("Please, insert a valid name.");
       }
-      if (attrs.email.trim() === 'undefined') {
+      if (attrs.email.trim() === '') {
         errors.push("Please, insert a valid e-mail.");
       }
       if (attrs.content.trim() === '') {
@@ -18830,15 +18834,24 @@ return (msw << 16) | (lsw & 0xFFFF);
           return newComment.save({}, {
             success: function(model, response, options) {
               if (response.status === 'error') {
-                notification.setNotification('error', response.error);
+                notification.setNotification('error', '<p>' + response.error + '</p>');
                 return notification.showNotification();
               } else {
-                notification.setNotification('info', 'Thanks for the comment.');
-                return notification.showNotification();
+                notification.setNotification('info', '<p>Thanks for the comment.</p><p>You can also get in touch with me at:</p><p><a href="http://www.github.com/leonardorb">GitHub</a>, <a href="http://www.twitter.com/leonardorb">Twitter</a> and <a href="http://www.dribbble.com/leonardorb">Dribbble</a></p>');
+                notification.showNotification();
+                newComment = '<div id="comment-' + model.get('id') + '" class="comment-parent">';
+                newComment += '<div class="comment-parent-photo"><span>avatar</span></div>';
+                newComment += '<div class="comment-parent-data">';
+                newComment += '<div class="comment-parent-content-author-and-date">';
+                newComment += '<span class="comment-parent-author">' + model.get('name') + '&nbsp;&nbsp;</span>';
+                newComment += '<span class="comment-parent-date"><a href="#comment-' + model.get('id') + '">data e hora</a></span>';
+                newComment += '</div>';
+                newComment += '<div class="comment-parent-content">' + model.get('content') + '</div></div></div>';
+                return $('.comments').append(newComment);
               }
             },
             error: function(model, response, options) {
-              notification.setNotification('error', 'Something went wrong. :(');
+              notification.setNotification('error', '<p>Something went wrong. :(</p>');
               return notification.showNotification();
             }
           });

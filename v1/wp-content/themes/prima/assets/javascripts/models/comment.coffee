@@ -6,11 +6,10 @@ class Prima.Models.Comment extends Backbone.Model
       Prima.BaseURL + '/api/submit_comment?post_id='+@get('post_id')+'&name='+@get('name')+'&email='+@get('email')+'&url='+@get('url')+'&content='+@get('content')
 
   validate: (attrs, options) ->
-    console.log attrs
     errors = []
-    if attrs.name.trim() is 'undefined'
+    if attrs.name.trim() is ''
       errors.push "Please, insert a valid name."
-    if attrs.email.trim() is 'undefined'
+    if attrs.email.trim() is ''
       errors.push "Please, insert a valid e-mail."
     if attrs.content.trim() is ''
       errors.push "Please, insert your comment."

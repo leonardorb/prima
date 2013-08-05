@@ -20,6 +20,11 @@ class Prima.Utilities.Notification
     @overlay.on 'click', =>
       @hideNotification()
 
+    $(document).keyup( (ev) =>
+    	if ev.keyCode is 27
+    	  @hideNotification()
+    )
+
   setNotification: (type, content) ->
     @resetNotificationClass()
     if type is 'info'
@@ -30,9 +35,9 @@ class Prima.Utilities.Notification
     @notification.html content
 
   showNotification: ->
-    @overlay.fadeIn 500
-    @notification.slideDown 500
+    @overlay.fadeIn 200
+    @notification.slideDown 200
 
   hideNotification: ->
-    @overlay.fadeOut 500
-    @notification.fadeOut 500
+    @overlay.fadeOut 200
+    @notification.fadeOut 200
