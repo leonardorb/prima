@@ -3,6 +3,7 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
 
     class PostsModule.Controller extends Backbone.Marionette.Controller
       index: ->
+        $('.loading').show()
         Posts = new Prima.Collections.Posts()
         Posts.fetch
           success: ->
@@ -12,6 +13,7 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
             document.title = '@leonardorb'
 
       single: (slug) ->
+        $('.loading').show()
         Post = new Prima.Models.Post
           slug : slug
         Post.fetch

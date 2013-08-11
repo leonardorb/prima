@@ -16,6 +16,7 @@
 
         Controller.prototype.index = function() {
           var Posts;
+          $('.loading').show();
           Posts = new Prima.Collections.Posts();
           return Posts.fetch({
             success: function() {
@@ -31,6 +32,7 @@
 
         Controller.prototype.single = function(slug) {
           var Post;
+          $('.loading').show();
           Post = new Prima.Models.Post({
             slug: slug
           });

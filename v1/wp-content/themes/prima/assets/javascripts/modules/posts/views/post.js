@@ -19,6 +19,8 @@
         PostView.prototype.events = {
           'click .post-title a': 'samePost',
           'click .comment-parent-date a': 'goToComment',
+          'click .comment-parent-reply': 'replyComment',
+          'click .comment-cancel-reply a': 'cancelReply',
           'click .comment-child-date a': 'goToComment',
           'submit form': 'submitComment'
         };
@@ -35,7 +37,37 @@
 
         PostView.prototype.render = function() {
           PostView.__super__.render.apply(this, arguments);
-          return $(this.el).hide();
+          $(this.el).hide();
+          return $('.loading').fadeOut('slow');
+        };
+
+        PostView.prototype.onShow = function() {
+          var slug;
+          $('img').parent().css('background', 'none');
+          Loading.load();
+          $(this.el).fadeIn('slow');
+          $('.website-navigation a').removeClass('selected');
+          if (this.model instanceof Prima.Models.Page) {
+            $('html, body').animate({
+              scrollTop: 0
+            }, 1000);
+            slug = this.model.get('slug') + '/';
+            $('.website-navigation a[href="' + slug + '"]').addClass('selected');
+          }
+          $('pre.javascript').snippet('javascript', {
+            style: 'darkblue'
+          });
+          if ((location.hash != null) && $(location.hash).length !== 0) {
+            $('html, body').animate({
+              scrollTop: $(location.hash).offset().top
+            }, 'slow');
+          }
+          $.vegas({
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
+          });
+          return $.vegas('overlay', {
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
+          });
         };
 
         PostView.prototype.goToComment = function(ev) {
@@ -43,6 +75,24 @@
           ev.preventDefault();
           target = $(ev.target);
           return window.location.hash = target.attr('href');
+        };
+
+        PostView.prototype.replyComment = function(ev) {
+          var target;
+          ev.preventDefault();
+          target = $(ev.target);
+          $('.comment-post-parent').val(target.data('id'));
+          $('body, html').animate({
+            scrollTop: $('.comments-add').position().top
+          }, 'slow');
+          $('.comment-cancel-reply').show('fast');
+          return $('.comment-post-name').focus();
+        };
+
+        PostView.prototype.cancelReply = function(ev) {
+          ev.preventDefault();
+          $('.comment-post-parent').val(0);
+          return $(ev.target).parent().hide('fast');
         };
 
         PostView.prototype.submitComment = function(ev) {
@@ -64,21 +114,36 @@
           });
           return newComment.save({}, {
             success: function(model, response, options) {
+              var commentClass, isPending;
               if (response.status === 'error') {
                 notification.setNotification('error', '<p>' + response.error + '</p>');
                 return notification.showNotification();
               } else {
-                notification.setNotification('info', '<p>Thanks for the comment.</p><p>You can also get in touch with me at:</p><p><a href="http://www.github.com/leonardorb">GitHub</a>, <a href="http://www.twitter.com/leonardorb">Twitter</a> and <a href="http://www.dribbble.com/leonardorb">Dribbble</a></p>');
+                notification.setNotification('info', '<p>Thanks for the comment.</p><p>You can also get in touch with me at:</p><p><a target="_blank" href="http://www.github.com/leonardorb">GitHub</a>, <a target="_blank" href="http://www.twitter.com/leonardorb">Twitter</a> and <a target="_blank" href="http://www.dribbble.com/leonardorb">Dribbble</a></p>');
                 notification.showNotification();
-                newComment = '<div id="comment-' + model.get('id') + '" class="comment-parent">';
-                newComment += '<div class="comment-parent-photo"><span>avatar</span></div>';
-                newComment += '<div class="comment-parent-data">';
-                newComment += '<div class="comment-parent-content-author-and-date">';
-                newComment += '<span class="comment-parent-author">' + model.get('name') + '&nbsp;&nbsp;</span>';
-                newComment += '<span class="comment-parent-date"><a href="#comment-' + model.get('id') + '">data e hora</a></span>';
+                if (model.get('parent') === 0) {
+                  commentClass = 'parent';
+                } else {
+                  commentClass = 'child';
+                }
+                isPending = model.get('status') === 'pending';
+                if (isPending) {
+                  newComment = '<div id="comment-' + model.get('id') + '" class="comment-' + commentClass + ' comment-pending">';
+                } else {
+                  newComment = '<div id="comment-' + model.get('id') + '" class="comment-' + commentClass + '">';
+                }
+                newComment += '<div class="comment-' + commentClass + '-photo"><span>' + Prima.Utilities.getAvatar(model.get('email')) + '</span></div>';
+                newComment += '<div class="comment-' + commentClass + '-data">';
+                newComment += '<div class="comment-' + commentClass + '-content-author-and-date">';
+                newComment += '<span class="comment-' + commentClass + '-author">' + model.get('name') + '&nbsp;&nbsp;</span>';
+                newComment += '<span class="comment-' + commentClass + '-date"><a href="#comment-' + model.get('id') + '">' + Prima.Utilities.srtftime(model.get('date'), "MMMM d, yyyy h:mm:ss tt") + '</a></span>';
                 newComment += '</div>';
-                newComment += '<div class="comment-parent-content">' + model.get('content') + '</div></div></div>';
-                return $('.comments').append(newComment);
+                newComment += '<div class="comment-' + commentClass + '-content">' + model.get('content') + '</div></div></div>';
+                if (commentClass.indexOf('parent') !== -1) {
+                  return $('.comments').append(newComment);
+                } else {
+                  return $('#comment-' + commentParent).append(newComment);
+                }
               }
             },
             error: function(model, response, options) {
@@ -86,29 +151,6 @@
               return notification.showNotification();
             }
           });
-        };
-
-        PostView.prototype.onShow = function() {
-          var slug;
-          $('img').parent().css('background', 'none');
-          Loading.load();
-          $(this.el).fadeIn('fast');
-          $('.website-navigation a').removeClass('selected');
-          if (this.model instanceof Prima.Models.Page) {
-            $('html, body').animate({
-              scrollTop: 0
-            }, 1000);
-            slug = this.model.get('slug') + '/';
-            $('.website-navigation a[href="' + slug + '"]').addClass('selected');
-          }
-          $('pre.javascript').snippet('javascript', {
-            style: 'darkblue'
-          });
-          if ((location.hash != null) && $(location.hash).length !== 0) {
-            return $('html, body').animate({
-              scrollTop: $(location.hash).offset().top
-            }, 2000);
-          }
         };
 
         return PostView;

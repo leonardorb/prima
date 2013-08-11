@@ -54,12 +54,6 @@
       }
     });
     Prima.App.start();
-    $.vegas({
-      src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
-    });
-    $.vegas('overlay', {
-      src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
-    });
     return _this.notification = new Prima.Utilities.Notification();
   });
 

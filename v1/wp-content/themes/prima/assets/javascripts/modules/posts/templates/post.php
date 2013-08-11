@@ -7,11 +7,12 @@
       {{strToHtml post.post.content}}
     </div>
     <div id="article-{{post.post.id}}-comments-count" class="comments-count">{{pluralize post.post.comment_count 'comment' 'comments'}}</div>
-    {{#if post.post.comments}}
     <div id="article-{{post.post.id}}-comments" class="comments">
+    {{#if post.post.comments}}
       {{#each post.post.comments}}
         {{#isCommentParent this}}
         <div id="comment-{{id}}" class="comment-parent{{#isAdminComment this}} comment-admin{{/isAdminComment}}">
+          <div class="comment-parent-reply"><a href="#" data-id="{{id}}">reply</a></div>
           <div class="comment-parent-photo"><span>{{getAvatar this.email}}</span></div>
           <div class="comment-parent-data">
             <div class="comment-parent-content-author-and-date">
@@ -26,11 +27,12 @@
         </div>
         {{/isCommentParent}}
       {{/each}}
-    </div>
     {{/if}}
-    <div id="article-{{post.post.id}}-comments-count" class="comments-add">{{addComment post.post.comment_count}}</div>
+    </div>
+    <div id="article-{{post.post.id}}-comments-add" class="comments-add">{{addComment post.post.comment_count}}</div>
     <div id="article-{{post.post.id}}-comment-post" class="comment-post">
       <form class="comment-form">
+        <p class="comment-cancel-reply"><a href="#">Cancel Reply</a></p>
         <p><label for="comment-post-name">Name</label><input type="text" class="input-text comment-post-name" id="comment-post-name" name="comment-post-name" placeholder="Your name" /></p>
         <input type="hidden" name="comment-post-postId" class="comment-post-postId" value="{{post.post.id}}" />
         <input type="hidden" name="comment-post-parent" class="comment-post-parent" value="0" />

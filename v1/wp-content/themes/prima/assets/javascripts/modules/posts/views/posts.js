@@ -35,13 +35,20 @@
 
         PostsView.prototype.render = function() {
           PostsView.__super__.render.apply(this, arguments);
-          return $(this.el).hide();
+          $(this.el).hide();
+          return $('.loading').fadeOut('fast');
         };
 
         PostsView.prototype.onShow = function() {
           Loading.load();
-          $(this.el).fadeIn('fast');
-          return $('.website-navigation a').removeClass('selected');
+          $(this.el).fadeIn('slow');
+          $('.website-navigation a').removeClass('selected');
+          $.vegas({
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
+          });
+          return $.vegas('overlay', {
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
+          });
         };
 
         return PostsView;

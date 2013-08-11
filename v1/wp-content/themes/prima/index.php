@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="loading">
+<div class="loadingbar">
 	<span class="loader"></span>
 </div>
 <div class="wrapper">

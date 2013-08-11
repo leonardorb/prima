@@ -2,7 +2,7 @@
 
   Theme Name: leonardorb.net
   Theme URI: http://www.leonardorb.net
-  Description: Version 1 of leonardorb.net
+  Description: Version 1.0 of leonardorb.net
   Version: 1.0
   Author: Leonardo Rodrigues Barbosa
   Author URI: http://www.leonardorb.net
@@ -61,6 +61,21 @@ body
   color: #fff
 
 .loading
+  display: none
+  left: 97%
+  margin:
+    top: 1%
+  position: fixed
+  text-align: center
+  width: 30px
+  z-index: 999
+
+  img
+    height: 30px
+    width: 30px
+
+
+.loadingbar
   height: 3px
   left: 0
   position: fixed
@@ -144,14 +159,15 @@ body
       weight: $font-bold
     padding: 15px 0
     width: 100%
-    +transition-property(color, border-bottom, margin-left)
+    +transition-property(border-bottom, color, margin-left, width)
     +transition-duration(0.5s)
     @include text-shadow(0 1px 1px #000)
 
     &:hover
       border-bottom: 1px solid $link-color
       color: #fff
-      margin-left: 10px
+      margin-left: 5%
+      width: 95%
 
   .selected
     color: #fff
@@ -248,8 +264,21 @@ a.post-title-link:hover
     bottom: 20px
     top: 20px
   padding: 30px 0
+  position: relative
   +border-radius(3px)
   @include box-shadow(0 1px 1px #000)
+
+.comment-parent.comment-pending
+  +opacity(0.5)
+
+.comment-parent-reply
+  position: absolute
+  top: 20px
+  right: 20px
+  
+  a
+    color: #fff
+    font-weight: bold
 
 .comment-parent-photo
   display: inline-block
@@ -325,6 +354,9 @@ a.post-title-link:hover
   +border-radius(3px)
   @include box-shadow(0 1px 1px #000)
 
+.comment-child.comment-pending
+  +opacity(0.5)
+
 .comment-child-photo
   display: inline-block
   vertical-align: top
@@ -396,6 +428,14 @@ a.post-title-link:hover
     margin: 0
     width: 100%
 
+  p.comment-cancel-reply
+    display: none
+    margin: 5px 0
+    text-align: center
+
+    a
+      color: #fff
+
   label
     clear: left
     color: #999
@@ -411,9 +451,11 @@ a.post-title-link:hover
     @include text-shadow(0 1px 1px #000)
 
   .input-text
-    border: 5px solid #999
+    background: rgba(69, 69, 69, 0.8)
+    border: none
+    border-bottom: 1px solid #999
     display: inline
-    color: $font-lighten
+    color: #fff
     float: left
     font:
       family: $font
@@ -424,15 +466,17 @@ a.post-title-link:hover
       right: 4%
     padding: 10px 20px
     width: 68%
-    +border-radius(15px)
+    +border-radius(3px)
     &:focus
-      border: 5px solid #2187e7
-      background: #2187e7
-      color: #fff
+      border-bottom: 1px solid #000
+      background: rgba(255, 255, 255, 0.9)
+      color: #2187e7
 
   textarea
-    border: 5px solid #999
-    color: $font-lighten
+    background: rgba(69, 69, 69, 0.8)
+    border: none
+    border-bottom: 1px solid #999
+    color: #fff
     display: inline
     float: left
     font:
@@ -445,11 +489,11 @@ a.post-title-link:hover
       right: 5%
     padding: 20px 20px
     width: 68%
-    +border-radius(15px)
+    +border-radius(3px)
     &:focus
-      border: 5px solid #2187e7
-      background: #2187e7
-      color: #fff
+      border-bottom: 1px solid #000
+      background: rgba(255, 255, 255, 0.9)
+      color: #2187e7
 
   .input-submit
     background: #2187e7

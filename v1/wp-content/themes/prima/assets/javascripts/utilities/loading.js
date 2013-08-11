@@ -4,7 +4,7 @@
     function Loading() {}
 
     Loading.prototype.load = function() {
-      return $('.loading').removeClass('fullwidth').delay(10).queue(function(next) {
+      return $('.loadingbar').removeClass('fullwidth').delay(10).queue(function(next) {
         $(this).addClass('fullwidth');
         return next();
       });

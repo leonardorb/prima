@@ -37,9 +37,4 @@ $(document).ready =>
 
   Prima.App.start()
 
-  $.vegas
-    src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
-  $.vegas 'overlay',
-    src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
-
   @notification = new Prima.Utilities.Notification()
