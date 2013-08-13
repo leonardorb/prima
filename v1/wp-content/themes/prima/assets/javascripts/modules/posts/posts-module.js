@@ -25,7 +25,7 @@
                 collection: Posts
               });
               Prima.App.main.show(postsView);
-              return document.title = '@leonardorb';
+              return document.title = 'leonardo.io';
             }
           });
         };
@@ -44,7 +44,7 @@
                   model: Post
                 });
                 Prima.App.main.show(postView);
-                return document.title = Post.get('post').title + ' | @leonardorb';
+                return document.title = Post.get('post').title + ' | leonardo.io';
               } else {
                 Page = new Prima.Models.Page({
                   slug: slug
@@ -56,9 +56,9 @@
                         model: Page
                       });
                       Prima.App.main.show(postView);
-                      return document.title = Page.get('page').title + ' | @leonardorb';
+                      return document.title = Page.get('page').title + ' | leonardo.io';
                     } else {
-                      return document.title = '404 - Page not found | @leonardorb';
+                      return document.title = '404 - Page not found | leonardo.io';
                     }
                   }
                 });

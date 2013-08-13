@@ -10,7 +10,7 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
             postsView = new PostsModule.PostsView
               collection : Posts
             Prima.App.main.show postsView
-            document.title = '@leonardorb'
+            document.title = 'leonardo.io'
 
       single: (slug) ->
         $('.loading').show()
@@ -23,7 +23,7 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
               postView = new PostsModule.PostView
                 model : Post
               Prima.App.main.show postView
-              document.title = Post.get('post').title + ' | @leonardorb'                
+              document.title = Post.get('post').title + ' | leonardo.io'
             else
               Page = new Prima.Models.Page
                 slug : slug
@@ -33,9 +33,9 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
                     postView = new PostsModule.PostView
                       model : Page
                     Prima.App.main.show postView
-                    document.title = Page.get('page').title + ' | @leonardorb'
+                    document.title = Page.get('page').title + ' | leonardo.io'
                   else
-                    document.title = '404 - Page not found | @leonardorb'
+                    document.title = '404 - Page not found | leonardo.io'
 
 
     PostsModule.controller = new PostsModule.Controller()

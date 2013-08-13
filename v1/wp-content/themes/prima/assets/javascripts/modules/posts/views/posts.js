@@ -36,19 +36,19 @@
         PostsView.prototype.render = function() {
           PostsView.__super__.render.apply(this, arguments);
           $(this.el).hide();
-          return $('.loading').fadeOut('fast');
+          $('.loading').fadeOut('fast');
+          $.vegas({
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg-min.jpg'
+          });
+          return $.vegas('overlay', {
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
+          });
         };
 
         PostsView.prototype.onShow = function() {
           Loading.load();
           $(this.el).fadeIn('slow');
-          $('.website-navigation a').removeClass('selected');
-          $.vegas({
-            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
-          });
-          return $.vegas('overlay', {
-            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
-          });
+          return $('.website-navigation a').removeClass('selected');
         };
 
         return PostsView;

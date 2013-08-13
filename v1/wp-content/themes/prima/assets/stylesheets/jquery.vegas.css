@@ -1,8 +1,8 @@
 .vegas-loading {
 	/* Loading Gif by http://preloaders.net/ */
 	-moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px;
-	background:#000 url(../images/loading.gif) no-repeat center center;
-	background:rgba(0, 0, 0, 0.7) url(../images/loading.gif) no-repeat center center;
+	background:#000 url(assets/images/loading.gif) no-repeat center center;
+	background:rgba(0, 0, 0, 0.7) url(assets/images/loading.gif) no-repeat center center;
 	height:32px;
 	left:20px;
 	position:fixed;

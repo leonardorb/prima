@@ -16865,7 +16865,11 @@ _.extend(Marionette.Module, {
           pushState: true,
           root: Prima.BaseURL
         });
-        postName = Prima.CurrentURL.split('/')[4];
+        if (Prima.BaseURL === '/') {
+          postName = Prima.CurrentURL.split('/')[1];
+        } else {
+          postName = Prima.CurrentURL.split('/')[4];
+        }
         postHash = location.hash;
         if (postName != null) {
           return Backbone.history.navigate(postName + '/' + postHash, {
@@ -18637,7 +18641,7 @@ return (msw << 16) | (lsw & 0xFFFF);
       return _ref;
     }
 
-    Posts.prototype.url = 'api/get_recent_posts';
+    Posts.prototype.url = 'api/get_recent_posts/';
 
     Posts.prototype.parse = function(response) {
       return response.posts;
@@ -18675,7 +18679,7 @@ return (msw << 16) | (lsw & 0xFFFF);
                 collection: Posts
               });
               Prima.App.main.show(postsView);
-              return document.title = '@leonardorb';
+              return document.title = 'leonardo.io';
             }
           });
         };
@@ -18694,7 +18698,7 @@ return (msw << 16) | (lsw & 0xFFFF);
                   model: Post
                 });
                 Prima.App.main.show(postView);
-                return document.title = Post.get('post').title + ' | @leonardorb';
+                return document.title = Post.get('post').title + ' | leonardo.io';
               } else {
                 Page = new Prima.Models.Page({
                   slug: slug
@@ -18706,9 +18710,9 @@ return (msw << 16) | (lsw & 0xFFFF);
                         model: Page
                       });
                       Prima.App.main.show(postView);
-                      return document.title = Page.get('page').title + ' | @leonardorb';
+                      return document.title = Page.get('page').title + ' | leonardo.io';
                     } else {
-                      return document.title = '404 - Page not found | @leonardorb';
+                      return document.title = '404 - Page not found | leonardo.io';
                     }
                   }
                 });
@@ -18796,7 +18800,13 @@ return (msw << 16) | (lsw & 0xFFFF);
         PostView.prototype.render = function() {
           PostView.__super__.render.apply(this, arguments);
           $(this.el).hide();
-          return $('.loading').fadeOut('slow');
+          $('.loading').fadeOut('slow');
+          $.vegas({
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg-min.jpg'
+          });
+          return $.vegas('overlay', {
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
+          });
         };
 
         PostView.prototype.onShow = function() {
@@ -18816,16 +18826,10 @@ return (msw << 16) | (lsw & 0xFFFF);
             style: 'darkblue'
           });
           if ((location.hash != null) && $(location.hash).length !== 0) {
-            $('html, body').animate({
+            return $('html, body').animate({
               scrollTop: $(location.hash).offset().top
             }, 'slow');
           }
-          $.vegas({
-            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
-          });
-          return $.vegas('overlay', {
-            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
-          });
         };
 
         PostView.prototype.goToComment = function(ev) {
@@ -18956,19 +18960,19 @@ return (msw << 16) | (lsw & 0xFFFF);
         PostsView.prototype.render = function() {
           PostsView.__super__.render.apply(this, arguments);
           $(this.el).hide();
-          return $('.loading').fadeOut('fast');
+          $('.loading').fadeOut('fast');
+          $.vegas({
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg-min.jpg'
+          });
+          return $.vegas('overlay', {
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
+          });
         };
 
         PostsView.prototype.onShow = function() {
           Loading.load();
           $(this.el).fadeIn('slow');
-          $('.website-navigation a').removeClass('selected');
-          $.vegas({
-            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
-          });
-          return $.vegas('overlay', {
-            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
-          });
+          return $('.website-navigation a').removeClass('selected');
         };
 
         return PostsView;

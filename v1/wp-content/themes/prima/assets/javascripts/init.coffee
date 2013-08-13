@@ -26,7 +26,7 @@ $(document).ready =>
       Backbone.history.start
         pushState : true
         root: Prima.BaseURL
-      postName = Prima.CurrentURL.split('/')[4]
+      if Prima.BaseURL is '/' then postName = Prima.CurrentURL.split('/')[1] else postName = Prima.CurrentURL.split('/')[4]
       postHash = location.hash
       if postName?
         Backbone.history.navigate postName + '/' + postHash,

@@ -19,12 +19,12 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
         super
         $(@el).hide()
         $('.loading').fadeOut 'fast'
+        $.vegas
+          src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg-min.jpg'
+        $.vegas 'overlay',
+          src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
 
       onShow: ->
         Loading.load()
         $(@el).fadeIn 'slow'
         $('.website-navigation a').removeClass 'selected'
-        $.vegas
-          src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
-        $.vegas 'overlay',
-          src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'

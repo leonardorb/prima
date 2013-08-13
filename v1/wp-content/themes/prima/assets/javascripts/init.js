@@ -40,7 +40,11 @@
           pushState: true,
           root: Prima.BaseURL
         });
-        postName = Prima.CurrentURL.split('/')[4];
+        if (Prima.BaseURL === '/') {
+          postName = Prima.CurrentURL.split('/')[1];
+        } else {
+          postName = Prima.CurrentURL.split('/')[4];
+        }
         postHash = location.hash;
         if (postName != null) {
           return Backbone.history.navigate(postName + '/' + postHash, {

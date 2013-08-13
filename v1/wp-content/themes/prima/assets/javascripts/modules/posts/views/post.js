@@ -38,7 +38,13 @@
         PostView.prototype.render = function() {
           PostView.__super__.render.apply(this, arguments);
           $(this.el).hide();
-          return $('.loading').fadeOut('slow');
+          $('.loading').fadeOut('slow');
+          $.vegas({
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg-min.jpg'
+          });
+          return $.vegas('overlay', {
+            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
+          });
         };
 
         PostView.prototype.onShow = function() {
@@ -58,16 +64,10 @@
             style: 'darkblue'
           });
           if ((location.hash != null) && $(location.hash).length !== 0) {
-            $('html, body').animate({
+            return $('html, body').animate({
               scrollTop: $(location.hash).offset().top
             }, 'slow');
           }
-          $.vegas({
-            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
-          });
-          return $.vegas('overlay', {
-            src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
-          });
         };
 
         PostView.prototype.goToComment = function(ev) {

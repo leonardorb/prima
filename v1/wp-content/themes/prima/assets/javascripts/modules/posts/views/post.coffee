@@ -22,6 +22,10 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
         super
         $(@el).hide()
         $('.loading').fadeOut 'slow'
+        $.vegas
+          src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg-min.jpg'
+        $.vegas 'overlay',
+          src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
 
       onShow: ->
         $('img').parent().css 'background', 'none'
@@ -40,10 +44,6 @@ Prima.Modules.Posts = Prima.App.module 'Posts',
           $('html, body').animate
             scrollTop: $(location.hash).offset().top
           , 'slow'
-        $.vegas
-          src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/bg.jpg'
-        $.vegas 'overlay',
-          src: Prima.BaseURL + 'wp-content/themes/prima/assets/images/overlays/02.png'
 
       goToComment: (ev) ->
         ev.preventDefault()

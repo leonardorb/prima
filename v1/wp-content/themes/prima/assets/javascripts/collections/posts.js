@@ -12,7 +12,7 @@
       return _ref;
     }
 
-    Posts.prototype.url = 'api/get_recent_posts';
+    Posts.prototype.url = 'api/get_recent_posts/';
 
     Posts.prototype.parse = function(response) {
       return response.posts;
