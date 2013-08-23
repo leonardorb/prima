@@ -33,8 +33,8 @@ body
 .notification
   display: none
   font:
-    size: 20px
-    weight: $font-normal
+    size: $font-normal
+    weight: $font-bold
   left: 50%
   margin:
     top: 10%
@@ -53,12 +53,12 @@ body
       weight: $font-bold
 
 .notification.info
-  background: #2187e7
-  color: #fff
+  background: $background-success
+  color: $font-white
 
 .notification.error
-  background: #a63a06
-  color: #fff
+  background: $background-error
+  color: $font-white
 
 .loading
   display: none
@@ -128,9 +128,9 @@ body
 
 .home-link
   font:
-    size: 50px
+    size: $font-huge
     weight: $font-bold
-  color: #fff
+  color: $font-white
   @include text-shadow(0 1px 1px #000)
 
 .website-presentation
@@ -152,7 +152,7 @@ body
 
   a
     border-bottom: 1px solid #666
-    color: #999
+    color: $font-light-gray
     display: block
     font:
       size: 20px
@@ -238,7 +238,7 @@ a.post-title-link:hover
       +border-radius(3px)
 
   pre
-    font-size: 15px
+    font-size: $font-small
     margin:
       bottom: 10px
       top: 20px
@@ -259,7 +259,7 @@ a.post-title-link:hover
 .comment-parent
   background: rgba(69, 69, 69, 0.9)
   border: 1px solid #ff9f13
-  color: #fff
+  color: $font-white
   margin:
     bottom: 20px
     top: 20px
@@ -277,7 +277,7 @@ a.post-title-link:hover
   right: 20px
   
   a
-    color: #fff
+    color: $font-white
     font-weight: bold
 
 .comment-parent-photo
@@ -296,7 +296,7 @@ a.post-title-link:hover
 
     img
       float: left
-      background: #fff
+      background: $background-white
       display: inline-block
       +border-radius(50px)
 
@@ -315,7 +315,7 @@ a.post-title-link:hover
 
 .comment-parent-date
   a
-    color: #ff9f13
+    color: $font-orange
 
 .comment-parent-content
   padding:
@@ -324,27 +324,27 @@ a.post-title-link:hover
 .comment-parent.comment-admin
   background: rgba(33, 135, 231, 0.9)
   border: 1px solid #fff
-  color: #fff
+  color: $font-white
 
   .comment-parent-photo span
     border: 10px solid #fff
     @include box-shadow(0 5px 5px #000)
 
   .comment-parent-author
-    font-size: 30px
+    font-size: $font-large
     @include text-shadow(0 1px 1px #000)
   
   .comment-parent-author:after
-    color: #fff
+    color: $font-white
 
   .comment-parent-date
     a
-      color: #eee
+      color: $font-very-light-gray
 
 .comment-child
   background: rgba(69, 69, 69, 0.9)
   border: 1px solid #ff9f13
-  color: #fff
+  color: $font-white
   display: block
   margin:
     left: 15%
@@ -373,7 +373,7 @@ a.post-title-link:hover
 
     img
       float: left
-      background: #fff
+      background: $background-white
       display: inline-block
       +border-radius(50px)
 
@@ -392,12 +392,12 @@ a.post-title-link:hover
 
 .comment-child-date
   a
-    color: #ff9f13
+    color: $font-orange
 
 .comment-child.comment-admin
   background: rgba(33, 135, 231, 0.9)
   border: 1px solid #fff
-  color: #fff
+  color: $font-white
 
   .comment-child-photo span
     border: 10px solid #fff
@@ -408,11 +408,11 @@ a.post-title-link:hover
     @include text-shadow(0 1px 1px #000)
 
   .comment-child-author:after
-    color: #fff
+    color: $font-white
 
   .comment-child-date
     a
-      color: #eee
+      color: $font-very-light-gray
 
 .comment-form
   background: rgba(69, 69, 69, 0.9)
@@ -434,13 +434,13 @@ a.post-title-link:hover
     text-align: center
 
     a
-      color: #fff
+      color: $font-white
 
   label
     clear: left
-    color: #999
+    color: $font-light-gray
     font:
-      size: 20px
+      size: $font-normal
       weight: $font-bold
     display: inline
     float: left
@@ -455,11 +455,11 @@ a.post-title-link:hover
     border: none
     border-bottom: 1px solid #999
     display: inline
-    color: #fff
+    color: $font-white
     float: left
     font:
       family: $font
-      size: 20px
+      size: $font-normal
       weight: $font-bold
     margin:
       left: 2%
@@ -470,18 +470,18 @@ a.post-title-link:hover
     &:focus
       border-bottom: 1px solid #000
       background: rgba(255, 255, 255, 0.9)
-      color: #2187e7
+      color: $link-title-hover-color
 
   textarea
     background: rgba(69, 69, 69, 0.8)
     border: none
     border-bottom: 1px solid #999
-    color: #fff
+    color: $font-white
     display: inline
     float: left
     font:
       family: $font
-      size: 20px
+      size: $font-normal
       weight: $font-bold
     height: 200px
     margin:
@@ -493,17 +493,17 @@ a.post-title-link:hover
     &:focus
       border-bottom: 1px solid #000
       background: rgba(255, 255, 255, 0.9)
-      color: #2187e7
+      color: $link-color
 
   .input-submit
-    background: #2187e7
+    background: $background-blue
     border: none
     clear: both
-    color: #fff
+    color: $font-white
     cursor: pointer
     float: left
     font:
-      size: 20px
+      size: $font-normal
       weight: $font-bold
     height: 50px
     margin:
@@ -516,4 +516,4 @@ a.post-title-link:hover
       height: 48px
       @include box-shadow(0 1px 0px #222)
 
-
+@import "responsive"
